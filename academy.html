@@ -1,445 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Digital Female Academy - Empowering Arab women through technology and creativity." />
-    <link rel="icon" type="image/x-icon" href="pics/academy_logo.png" />
-    <title>Digital Female Academy | أكاديمية الأُنثى الرقمية</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Digital Female Academy - Empowering Arab women through technology and creativity." />
+  <link rel="icon" type="image/x-icon" href="pics/academy_logo.png" />
+  <title>Digital Female Academy | أكاديمية الأُنثى الرقمية</title>
 
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
-        :root {
-            --bg-color: #27004d;
-            --first-color: #ff66e7;
-            --second-color: #9d6bff;
-            --accent-color: #5ce1e6;
-            --text-color: #ffffff;
-            --body-font: "Poppins", sans-serif;
-            --transition: all 0.4s ease;
-        }
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-        img {
-            pointer-events: none;
-            -webkit-user-drag: none;
-            -webkit-user-select: none;
-            user-select: none;
-        }
+    :root {
+      --bg-color: #27004d;
+      --first-color: #ff66e7;
+      --second-color: #9d6bff;
+      --accent-color: #5ce1e6;
+      --text-color: #ffffff;
+      --body-font: "Poppins", sans-serif;
+      --transition: all 0.4s ease;
+    }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+      font-family: var(--body-font);
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      scroll-behavior: smooth;
+      line-height: 1.8;
+    }
 
-        body {
-            font-family: var(--body-font);
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            scroll-behavior: smooth;
-            line-height: 1.8;
-        }
+    img {
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-select: none;
+    }
 
-        /* ===== HEADER ===== */
-        header {
-            background-color: #1a0033;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-        }
+    /* ===== NAVBAR ===== */
+    header {
+      width: 100%;
+      background: #1c0038;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
 
-        nav img {
-            width: 120px;
-            transition: var(--transition);
-        }
+    nav img {
+      height: 50px;
+      width: auto;
+    }
 
-        nav img:hover {
-            transform: scale(1.05);
-        }
+    .nav__menu {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      transition: var(--transition);
+    }
 
-        nav ul {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
+    .nav__menu li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            transition: var(--transition);
-        }
+    .nav__menu li a:hover {
+      color: var(--first-color);
+    }
 
-        nav a:hover {
-            color: var(--first-color);
-        }
+    .nav__toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: var(--first-color);
+      cursor: pointer;
+    }
 
-        /* ===== SECTIONS ===== */
-        .section {
-            padding: 7rem 2rem 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: fadeInUp 1s forwards;
-        }
+    /* ===== MOBILE MENU ===== */
+    @media screen and (max-width: 768px) {
+      .nav__toggle {
+        display: block;
+      }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      .nav__menu {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 60%;
+        background-color: var(--second-color);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+        border-radius: 1rem 0 0 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: right 0.4s ease;
+      }
 
-        .section-title {
-            text-align: center;
-            color: var(--first-color);
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            position: relative;
-        }
+      .nav__menu.show {
+        right: 0;
+      }
+    }
 
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 0.5rem auto 0;
-            border-radius: 2px;
-        }
+    main {
+      padding-top: 100px;
+    }
 
-        /* ===== ABOUT ===== */
-        .about__container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            text-align: left;
-            animation-delay: 0.2s;
-        }
+    /* ===== SECTIONS ===== */
+    .section {
+      padding: 4rem 2rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      animation: fadeInUp 1s forwards;
+    }
 
-        .about__img img {
-            width: 500px;
-            transition: var(--transition);
-            border-radius: 1rem;
-            background-color: #fff1;
-            padding: 0.5rem;
-        }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .about__img img:hover {
-            transform: scale(1.05);
-        }
+    .section-title {
+      text-align: center;
+      color: var(--first-color);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+    }
 
-        .about__text {
-            max-width: 520px;
-            font-size: 1.05rem;
-            color: #f0e9ff;
-        }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent-color);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
 
-        .about__text strong {
-            color: var(--accent-color);
-        }
+    /* ===== ABOUT ===== */
+    .about__container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
 
-        /* ===== WHAT WE OFFER ===== */
-        .skills__container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            align-items: center;
-            animation-delay: 0.3s;
-        }
+    .about__img img {
+      width: 400px;
+      border-radius: 1rem;
+      transition: var(--transition);
+    }
 
-        .skill-box {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 1.8rem;
-            text-align: center;
-            width: 100%;
-            max-width: 600px;
-            transition: var(--transition);
-        }
+    .about__img img:hover {
+      transform: scale(1.05);
+    }
 
-        .skill-box:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent-color);
-        }
+    .about__text {
+      max-width: 520px;
+      font-size: 1.05rem;
+      color: #f0e9ff;
+    }
 
-        .skill-box h3 {
-            color: var(--first-color);
-            margin-bottom: 0.8rem;
-        }
+    .about__text strong {
+      color: var(--accent-color);
+    }
 
-        .skill-box p {
-            color: #ddd;
-        }
+    /* ===== WHAT WE OFFER ===== */
+    .skills__container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
 
-        /* ===== GALLERY ===== */
-        .academy-gallery {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+    .skill-box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 1.8rem;
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+      transition: var(--transition);
+    }
 
-        .academy-gallery img {
-            max-width: 300px;
-            border-radius: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            pointer-events: none;
-            user-select: none;
-            transition: var(--transition);
-        }
+    .skill-box:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-color);
+    }
 
-        .academy-gallery img:hover {
-            transform: scale(1.05);
-        }
+    .skill-box h3 {
+      color: var(--first-color);
+      margin-bottom: 0.8rem;
+    }
 
-        .gallery-text {
-            text-align: center;
-            margin-top: 1.5rem;
-            color: #d0c8ff;
-            font-size: 1rem;
-        }
+    .skill-box p {
+      color: #ddd;
+    }
 
-        /* ===== JOIN ===== */
-        .join {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            text-align: left;
-            animation-delay: 0.4s;
-        }
+    /* ===== GALLERY ===== */
+    .academy-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
 
-        .join img {
-            width: 320px;
-            border-radius: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            transition: var(--transition);
-            background-color: #fff1;
-            padding: 0.5rem;
-        }
+    .academy-gallery img {
+      max-width: 300px;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      transition: var(--transition);
+    }
 
-        .join img:hover {
-            transform: scale(1.05);
-        }
+    .academy-gallery img:hover {
+      transform: scale(1.05);
+    }
 
-        .join h3 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
+    .gallery-text {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #d0c8ff;
+    }
 
-        .join p {
-            color: #e5dbff;
-        }
+    /* ===== JOIN ===== */
+    .join {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      text-align: center;
+      justify-content: center;
+    }
 
-        /* ===== CONTACT ===== */
-        .contact {
-            text-align: center;
-        }
+    .join img {
+      width: 320px;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      background-color: #fff1;
+      padding: 0.5rem;
+      transition: var(--transition);
+    }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
+    .join img:hover {
+      transform: scale(1.05);
+    }
 
-        .social-links a {
-            background-color: var(--first-color);
-            color: #fff;
-            padding: 0.8rem 1.6rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-        }
+    .join h3 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
 
-        .social-links a:hover {
-            background-color: var(--accent-color);
-            color: #27004d;
-        }
+    .join p {
+      color: #e5dbff;
+    }
 
-        /* ===== FOOTER ===== */
-        footer {
-            background-color: #1a0033;
-            color: #ddd;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 3rem;
-            font-size: 0.95rem;
-        }
+    /* ===== CONTACT ===== */
+    .contact {
+      text-align: center;
+    }
 
-        /* ===== MEDIA QUERIES ===== */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 0.8rem;
-                font-size: 1em;
-            }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
 
-            nav ul {
-                gap: 1rem;
-            }
+    .social-links a {
+      background-color: var(--first-color);
+      color: #fff;
+      padding: 0.8rem 1.6rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+    }
 
-            .about__container,
-            .join {
-                flex-direction: column;
-                text-align: center;
-            }
+    .social-links a:hover {
+      background-color: var(--accent-color);
+      color: #27004d;
+    }
 
-            .about__img img {
-                width: 80%;
-            }
+    footer {
+      background-color: #1a0033;
+      color: #ddd;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+    }
 
-            .about__text,
-            .join div {
-                max-width: 90%;
-            }
+    /* ===== MEDIA QUERIES ===== */
+    @media (max-width: 768px) {
+      .about__container,
+      .join {
+        flex-direction: column;
+        text-align: center;
+      }
 
-            .academy-gallery img {
-                width: 40%;
-                height: auto;
-            }
+      .about__img img {
+        width: 80%;
+      }
 
-            .skills__container {
-                gap: 1.5rem;
-            }
-
-            .section {
-                padding: 6rem 1.5rem 3rem;
-            }
-
-        }
-    </style>
+      .academy-gallery img {
+        width: 45%;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <nav>
-            <a href="#"><img src="pics/academy_logo.png" alt="Academy logo" /></a>
-            <ul>
-                <li><a href="index.html">Founder</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#content">Content</a></li>
-                <li><a href="#join">Join</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <a href="#"><img src="pics/academy_logo.png" alt="Academy logo" /></a>
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul id="nav-menu" class="nav__menu">
+        <li><a href="index.html">Founder</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#content">Content</a></li>
+        <li><a href="#join">Join</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <!-- ABOUT -->
-        <section class="section" id="about">
-            <h2 class="section-title">About the Academy</h2>
-            <div class="about__container">
-                <div class="about__img">
-                    <img src="pics/academy_logo.png" alt="Academy logo" />
-                </div>
-                <div class="about__text">
-                    <p>
-                        <strong>Digital Female Academy</strong> (<strong>أكاديمية الأُنثى الرقمية</strong>) is an
-                        educational
-                        initiative dedicated to <strong>empowering Arabic-speaking women</strong> in the world of
-                        technology,
-                        design, and digital creativity.
-                        <br /><br />
-                        Currently, our lessons and content are in <strong>Arabic</strong>, but soon we’ll launch
-                        programs in
-                        <strong>English</strong> and <strong>French</strong> 🌍.
-                    </p>
-                </div>
-            </div>
-        </section>
+  <main>
+    <section class="section" id="about">
+      <h2 class="section-title">About the Academy</h2>
+      <div class="about__container">
+        <div class="about__img">
+          <img src="pics/academy_logo.png" alt="Academy logo" />
+        </div>
+        <div class="about__text">
+          <p>
+            <strong>Digital Female Academy</strong> (<strong>أكاديمية الأُنثى الرقمية</strong>)
+            is an educational initiative dedicated to
+            <strong>empowering Arabic-speaking women</strong> in the world of
+            technology, design, and digital creativity.
+            <br /><br />
+            Currently, our lessons and content are in <strong>Arabic</strong>, but soon we’ll
+            launch programs in <strong>English</strong> and <strong>French</strong> 🌍.
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <!-- CONTENT -->
-        <section class="section" id="content">
-            <h2 class="section-title">What We Offer</h2>
+    <section class="section" id="content">
+      <h2 class="section-title">What We Offer</h2>
+      <div class="skills__container">
+        <div class="skill-box">
+          <h3>💻 Courses & Workshops</h3>
+          <p>
+            We teach <strong>Web Development, Design, and Digital Tools</strong> —
+            all explained clearly in Arabic for all learning levels.
+          </p>
+        </div>
+        <div class="skill-box">
+          <h3>📚 Daily Educational Posts</h3>
+          <p>
+            We share daily tips, lessons, and inspiration to help women stay
+            motivated and creative in the digital world.
+          </p>
+        </div>
+        <div class="skill-box">
+          <h3>🎁 Free Learning Opportunities</h3>
+          <p>
+            We host <strong>free mini-courses</strong> and
+            <strong>interactive live sessions</strong> to support our growing
+            community of learners 🌷.
+          </p>
+        </div>
+      </div>
 
-            <div class="skills__container">
-                <div class="skill-box">
-                    <h3>💻 Courses & Workshops</h3>
-                    <p>We teach <strong>Web Development, Design, and Digital Tools</strong> — all explained clearly in
-                        Arabic for
-                        all learning levels.</p>
-                </div>
+      <p class="gallery-text">We can learn, work and create together</p>
+      <div class="academy-gallery">
+        <img src="pics/infinity.gif" alt="Design session" />
+        <img src="pics/phone.gif" alt="Academy course photo" />
+        <img src="pics/hight5.gif" alt="Workshop photo" />
+      </div>
+    </section>
 
-                <div class="skill-box">
-                    <h3>📚 Daily Educational Posts</h3>
-                    <p>We share daily tips, lessons, and inspiration to help women stay motivated and creative in the
-                        digital
-                        world.</p>
-                </div>
+    <section class="section" id="join">
+      <h2 class="section-title">Join Our Community</h2>
+      <div class="join">
+        <img src="pics/academy_logo.png" alt="Join us" />
+        <div>
+          <h3>Be Part of Something Inspiring</h3>
+          <p>
+            We have a warm and welcoming community where Arab women share, learn,
+            and grow together 🌸. Whether you’re new to tech or already skilled,
+            you’ll find encouragement, collaboration, and inspiration.
+          </p>
+        </div>
+      </div>
+    </section>
 
-                <div class="skill-box">
-                    <h3>🎁 Free Learning Opportunities</h3>
-                    <p>We host <strong>free mini-courses</strong> and <strong>interactive live sessions</strong> to
-                        support our
-                        growing community of learners 🌷.</p>
-                </div>
-            </div>
+    <section class="section" id="contact">
+      <h2 class="section-title">Stay Connected</h2>
+      <p>Follow <strong>Digital Female Academy</strong> on our social platforms:</p>
+      <div class="social-links">
+        <a href="https://facebook.com/" target="_blank">Facebook</a>
+        <a href="https://instagram.com/cs_women_academy" target="_blank">Instagram</a>
+        <a href="https://t.me/cs_women_academy" target="_blank">Telegram</a>
+      </div>
+    </section>
+  </main>
 
-            <p class="gallery-text">We can learn, work and create together</p>
-            <div class="academy-gallery">
-                <img src="pics/infinity.gif" alt="Design session" height="200px" />
-                <img src="pics/phone.gif" alt="Academy course photo" height="200px" />
-                <img src="pics/hight5.gif" alt="Workshop photo" height="200px" />
-            </div>
-        </section>
+  <footer>
+    <p>© 2025 Digital Female Academy. All rights reserved.</p>
+  </footer>
 
-        <!-- JOIN -->
-        <section class="section" id="join">
-            <h2 class="section-title">Join Our Community</h2>
-            <div class="join">
-                <img src="pics/community.png" alt="Community" />
-                <div>
-                    <h3>Be Part of Something Inspiring</h3>
-                    <p>
-                        We have a warm and welcoming community where Arab women share, learn, and grow together 🌸.
-                        Whether you’re
-                        new to tech or already skilled, you’ll find encouragement, collaboration, and inspiration.
-                    </p>
-                </div>
-            </div>
-        </section>
+  <script>
+    const navMenu = document.getElementById("nav-menu");
+    const navToggle = document.getElementById("nav-toggle");
+    const navLinks = document.querySelectorAll(".nav__menu a");
 
-        <!-- CONTACT -->
-        <section class="section" id="contact">
-            <h2 class="section-title">Stay Connected</h2>
-            <p>Follow <strong>Digital Female Academy</strong> on our social platforms:</p>
-            <div class="social-links">
-                <a href="https://facebook.com/" target="_blank">Facebook</a>
-                <a href="https://instagram.com/cs_women_academy" target="_blank">Instagram</a>
-                <a href="https://t.me/cs_women_academy" target="_blank">Telegram</a>
-            </div>
-        </section>
-    </main>
+    navToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
 
-    <footer>
-        <p>© 2025 Digital Female Academy. All rights reserved.</p>
-    </footer>
+    navLinks.forEach((link) =>
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("show");
+      })
+    );
+  </script>
 </body>
-
 </html>
