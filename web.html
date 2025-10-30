@@ -178,6 +178,7 @@
             justify-content: center;
         }
 
+        /* Different backgrounds for each portfolio */
         .portfolio-preview.minimalist {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
@@ -250,18 +251,141 @@
             overflow: hidden;
         }
 
-        /* Mini Portfolio Styles */
-        .mini-header {
+        /* Different layouts for each portfolio style */
+        
+        /* Minimalist Layout */
+        .minimalist-layout {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+        
+        .minimalist-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #f5576c;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
         }
-
-        .mini-avatar {
+        
+        .minimalist-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .minimalist-title {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 15px;
+        }
+        
+        .minimalist-divider {
+            width: 50px;
+            height: 2px;
+            background: #f5576c;
+            margin: 15px 0;
+        }
+        
+        .minimalist-tagline {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            max-width: 80%;
+        }
+        
+        /* Dark Layout */
+        .dark-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            height: 100%;
+        }
+        
+        .dark-left, .dark-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .dark-avatar {
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: var(--first-color);
+            background: #ff3b8d;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .dark-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .dark-title {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-bottom: 15px;
+        }
+        
+        .dark-projects {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        
+        .dark-project {
+            background: #f0f0f0;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .dark-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .dark-skill {
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+        }
+        
+        /* Creative Layout */
+        .creative-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto 1fr;
+            gap: 15px;
+            height: 100%;
+        }
+        
+        .creative-header {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .creative-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #4facfe;
             margin-right: 15px;
             display: flex;
             align-items: center;
@@ -269,28 +393,28 @@
             color: white;
             font-size: 1.5rem;
         }
-
-        .mini-info {
+        
+        .creative-info {
             flex: 1;
         }
-
-        .mini-name {
+        
+        .creative-name {
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 5px;
         }
-
-        .mini-title {
+        
+        .creative-title {
             font-size: 0.8rem;
             opacity: 0.7;
         }
-
-        .mini-links {
+        
+        .creative-links {
             display: flex;
             gap: 10px;
         }
-
-        .mini-link {
+        
+        .creative-link {
             width: 30px;
             height: 30px;
             border-radius: 50%;
@@ -302,160 +426,347 @@
             font-size: 0.9rem;
             transition: var(--transition);
         }
-
-        .mini-link:hover {
-            background: var(--first-color);
-            color: white;
-        }
-
-        .mini-section {
-            margin-bottom: 15px;
-        }
-
-        .mini-section-title {
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            color: var(--dark-color);
-        }
-
-        .mini-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-
-        .mini-skill {
-            background: #f0f0f0;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-        }
-
-        .mini-projects {
+        
+        .creative-projects {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
         }
-
-        .mini-project {
-            height: 40px;
-            background: #f5f5f5;
-            border-radius: 5px;
+        
+        .creative-project {
+            background: #e6f4ff;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .creative-project-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #4facfe;
+        }
+        
+        .creative-project-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .creative-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            align-content: flex-start;
+        }
+        
+        .creative-skill {
+            background: #e6f4ff;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            height: fit-content;
+        }
+        
+        /* Modern Layout */
+        .modern-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr auto;
+            gap: 15px;
+            height: 100%;
+        }
+        
+        .modern-header {
+            display: flex;
+            align-items: center;
+        }
+        
+        .modern-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #43e97b;
+            margin-right: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .modern-info {
+            flex: 1;
+        }
+        
+        .modern-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .modern-title {
             font-size: 0.8rem;
-            font-weight: 500;
+            opacity: 0.7;
         }
-
-        /* Dark mode specific styles */
-        .dark .portfolio-screen {
-            background: #1a1a1a;
-            color: white;
+        
+        .modern-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-
-        .dark .portfolio-header {
-            background: #2a2a2a;
-            border-bottom: 1px solid #333;
+        
+        .modern-tagline {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
         }
-
-        .dark .mini-link {
-            background: #333;
-            color: white;
+        
+        .modern-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
         }
-
-        .dark .mini-skill {
-            background: #333;
-            color: white;
+        
+        .modern-stat {
+            text-align: center;
         }
-
-        .dark .mini-project {
-            background: #333;
-            color: white;
+        
+        .modern-stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #43e97b;
         }
-
-        /* Minimalist specific styles */
-        .minimalist .portfolio-screen {
-            background: #ffffff;
+        
+        .modern-stat-label {
+            font-size: 0.7rem;
+            opacity: 0.7;
         }
-
-        .minimalist .mini-avatar {
-            background: #f5576c;
+        
+        .modern-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
         }
-
-        .minimalist .mini-link:hover {
-            background: #f5576c;
-        }
-
-        /* Creative specific styles */
-        .creative .portfolio-screen {
-            background: #ffffff;
-        }
-
-        .creative .mini-avatar {
-            background: #4facfe;
-        }
-
-        .creative .mini-link:hover {
-            background: #4facfe;
-        }
-
-        .creative .mini-skill {
-            background: #e6f4ff;
-        }
-
-        /* Modern specific styles */
-        .modern .portfolio-screen {
-            background: #ffffff;
-        }
-
-        .modern .mini-avatar {
-            background: #43e97b;
-        }
-
-        .modern .mini-link:hover {
-            background: #43e97b;
-        }
-
-        .modern .mini-project {
+        
+        .modern-skill {
             background: #e8f9ef;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
         }
-
-        /* Classic specific styles */
-        .classic .portfolio-screen {
-            background: #ffffff;
+        
+        /* Classic Layout */
+        .classic-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            height: 100%;
         }
-
-        .classic .mini-avatar {
+        
+        .classic-sidebar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .classic-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
             background: #fa709a;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
         }
-
-        .classic .mini-link:hover {
-            background: #fa709a;
+        
+        .classic-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            text-align: center;
         }
-
-        .classic .mini-skill {
+        
+        .classic-title {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .classic-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+        
+        .classic-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            padding: 5px 0;
+        }
+        
+        .classic-link i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .classic-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .classic-section {
+            margin-bottom: 10px;
+        }
+        
+        .classic-section-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .classic-projects {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        
+        .classic-project {
             background: #ffeef4;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
         }
-
-        /* Animated specific styles */
-        .animated .portfolio-screen {
-            background: #ffffff;
+        
+        .classic-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
         }
-
-        .animated .mini-avatar {
+        
+        .classic-skill {
+            background: #ffeef4;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+        }
+        
+        /* Animated Layout */
+        .animated-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr auto;
+            gap: 15px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .animated-header {
+            display: flex;
+            align-items: center;
+        }
+        
+        .animated-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             background: #764ba2;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
         }
-
-        .animated .mini-link:hover {
-            background: #764ba2;
+        
+        .animated-info {
+            flex: 1;
         }
-
-        .animated .mini-project {
+        
+        .animated-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .animated-title {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .animated-links {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .animated-link {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-color);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .animated-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .animated-project {
             background: #f0e6ff;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
-
+        
+        .animated-project-icon {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #764ba2;
+        }
+        
+        .animated-project-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .animated-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .animated-skill {
+            background: #f0e6ff;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+        }
+        
+        /* Portfolio Info Styles */
         .portfolio-info {
             padding: 1.5rem;
         }
@@ -590,6 +901,102 @@
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .gallery-container {
+                padding: 1rem;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            /* Adjust layouts for mobile */
+            .dark-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .creative-layout {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+            }
+            
+            .creative-projects {
+                grid-column: 1;
+            }
+            
+            .creative-skills {
+                grid-column: 1;
+            }
+            
+            .classic-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .classic-sidebar {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px 0;
+            }
+            
+            .classic-avatar {
+                margin-bottom: 0;
+                margin-right: 15px;
+            }
+            
+            .classic-links {
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+            
+            .classic-link {
+                padding: 0 5px;
+            }
+            
+            .animated-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .portfolio-filters {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .portfolio-preview {
+                height: 280px;
+            }
+            
+            .portfolio-screen {
+                width: 90%;
+                height: 90%;
+            }
+            
+            .classic-sidebar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .classic-avatar {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .classic-links {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -645,33 +1052,14 @@
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <div class="mini-header">
-                                    <div class="mini-avatar">
+                                <div class="minimalist-layout">
+                                    <div class="minimalist-avatar">
                                         <i class="fas fa-user"></i>
                                     </div>
-                                    <div class="mini-info">
-                                        <div class="mini-name">Sarah Ayat</div>
-                                        <div class="mini-title">UI/UX Designer</div>
-                                    </div>
-                                    <div class="mini-links">
-                                        <div class="mini-link"><i class="fab fa-dribbble"></i></div>
-                                        <div class="mini-link"><i class="fab fa-behance"></i></div>
-                                    </div>
-                                </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">About</div>
-                                    <div style="font-size: 0.8rem; line-height: 1.4;">
-                                        Creating clean, user-centered designs with a focus on simplicity and functionality.
-                                    </div>
-                                </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">Skills</div>
-                                    <div class="mini-skills">
-                                        <div class="mini-skill">UI Design</div>
-                                        <div class="mini-skill">UX Research</div>
-                                        <div class="mini-skill">Figma</div>
-                                        <div class="mini-skill">Prototyping</div>
-                                    </div>
+                                    <div class="minimalist-name">Sarah Ayat</div>
+                                    <div class="minimalist-title">UI/UX Designer</div>
+                                    <div class="minimalist-divider"></div>
+                                    <div class="minimalist-tagline">Creating clean, user-centered designs with a focus on simplicity and functionality.</div>
                                 </div>
                             </div>
                         </div>
@@ -699,29 +1087,38 @@
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <div class="mini-header">
-                                    <div class="mini-avatar" style="background: #ff3b8d;">
-                                        <i class="fas fa-code"></i>
+                                <div class="dark-layout">
+                                    <div class="dark-left">
+                                        <div>
+                                            <div class="dark-avatar">
+                                                <i class="fas fa-code"></i>
+                                            </div>
+                                            <div class="dark-name">Fatimah Dy</div>
+                                            <div class="dark-title">Frontend Developer</div>
+                                        </div>
+                                        <div class="dark-skills">
+                                            <div class="dark-skill">HTML/CSS</div>
+                                            <div class="dark-skill">JavaScript</div>
+                                            <div class="dark-skill">React</div>
+                                            <div class="dark-skill">Vue.js</div>
+                                        </div>
                                     </div>
-                                    <div class="mini-info">
-                                        <div class="mini-name">Fatimah Dy</div>
-                                        <div class="mini-title">Female-Only Voice Off</div>
-                                    </div>
-                                    <div class="mini-links">
-                                        <div class="mini-link"><i class="fab fa-github"></i></div>
-                                        <div class="mini-link"><i class="fab fa-codepen"></i></div>
+                                    <div class="dark-right">
+                                        <div class="dark-projects">
+                                            <div class="dark-project">E-commerce Platform</div>
+                                            <div class="dark-project">Dashboard UI</div>
+                                            <div class="dark-project">Mobile App</div>
+                                            <div class="dark-project">Portfolio Site</div>
+                                        </div>
+                                        <div>
+                                            <div class="dark-skills">
+                                                <div class="dark-skill">UI/UX</div>
+                                                <div class="dark-skill">Responsive</div>
+                                                <div class="dark-skill">Animation</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">Projects</div>
-                                    <div class="mini-projects">
-                                        <div class="mini-project">Kids Lessons</div>
-                                        <div class="mini-project">Character Role</div>
-                                        <div class="mini-project">Book Recite</div>
-            
-                                    </div>
-                                </div>
-                             
                             </div>
                         </div>
                     </div>
@@ -748,35 +1145,45 @@
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <div class="mini-header">
-                                    <div class="mini-avatar">
-                                        <i class="fas fa-palette"></i>
+                                <div class="creative-layout">
+                                    <div class="creative-header">
+                                        <div class="creative-avatar">
+                                            <i class="fas fa-palette"></i>
+                                        </div>
+                                        <div class="creative-info">
+                                            <div class="creative-name">Amira Layl</div>
+                                            <div class="creative-title">Illustrator & Artist</div>
+                                        </div>
+                                        <div class="creative-links">
+                                            <div class="creative-link"><i class="fab fa-instagram"></i></div>
+                                            <div class="creative-link"><i class="fab fa-artstation"></i></div>
+                                        </div>
                                     </div>
-                                    <div class="mini-info">
-                                        <div class="mini-name">Amira Layl</div>
-                                        <div class="mini-title">Illustrator & Artist</div>
+                                    <div class="creative-projects">
+                                        <div class="creative-project">
+                                            <div class="creative-project-icon"><i class="fas fa-user"></i></div>
+                                            <div class="creative-project-title">Character Design</div>
+                                        </div>
+                                        <div class="creative-project">
+                                            <div class="creative-project-icon"><i class="fas fa-book"></i></div>
+                                            <div class="creative-project-title">Book Cover</div>
+                                        </div>
+                                        <div class="creative-project">
+                                            <div class="creative-project-icon"><i class="fas fa-music"></i></div>
+                                            <div class="creative-project-title">Album Art</div>
+                                        </div>
+                                        <div class="creative-project">
+                                            <div class="creative-project-icon"><i class="fas fa-lightbulb"></i></div>
+                                            <div class="creative-project-title">Concept Art</div>
+                                        </div>
                                     </div>
-                                    <div class="mini-links">
-                                        <div class="mini-link"><i class="fab fa-instagram"></i></div>
-                                        <div class="mini-link"><i class="fab fa-artstation"></i></div>
-                                    </div>
-                                </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">Featured Work</div>
-                                    <div class="mini-projects">
-                                        <div class="mini-project">Character Design</div>
-                                        <div class="mini-project">Book Cover</div>
-                                        <div class="mini-project">Album Art</div>
-                                        <div class="mini-project">Concept Art</div>
-                                    </div>
-                                </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">Specialties</div>
-                                    <div class="mini-skills">
-                                        <div class="mini-skill">Digital Painting</div>
-                                        <div class="mini-skill">Character Design</div>
-                                        <div class="mini-skill">Illustration</div>
-                                        <div class="mini-skill">Concept Art</div>
+                                    <div class="creative-skills">
+                                        <div class="creative-skill">Digital Painting</div>
+                                        <div class="creative-skill">Character Design</div>
+                                        <div class="creative-skill">Illustration</div>
+                                        <div class="creative-skill">Concept Art</div>
+                                        <div class="creative-skill">Photoshop</div>
+                                        <div class="creative-skill">Procreate</div>
                                     </div>
                                 </div>
                             </div>
@@ -805,32 +1212,39 @@
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <div class="mini-header">
-                                    <div class="mini-avatar">
-                                        <i class="fas fa-mobile-alt"></i>
+                                <div class="modern-layout">
+                                    <div class="modern-header">
+                                        <div class="modern-avatar">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                        <div class="modern-info">
+                                            <div class="modern-name">Tasnim Ka</div>
+                                            <div class="modern-title">Product Designer</div>
+                                        </div>
                                     </div>
-                                    <div class="mini-info">
-                                        <div class="mini-name">Tasnim Ka</div>
-                                        <div class="mini-title">Product Designer</div>
+                                    <div class="modern-content">
+                                        <div class="modern-tagline">5+ years designing digital products for startups and enterprise companies.</div>
+                                        <div class="modern-stats">
+                                            <div class="modern-stat">
+                                                <div class="modern-stat-value">50+</div>
+                                                <div class="modern-stat-label">Projects</div>
+                                            </div>
+                                            <div class="modern-stat">
+                                                <div class="modern-stat-value">25+</div>
+                                                <div class="modern-stat-label">Clients</div>
+                                            </div>
+                                            <div class="modern-stat">
+                                                <div class="modern-stat-value">5+</div>
+                                                <div class="modern-stat-label">Years</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mini-links">
-                                        <div class="mini-link"><i class="fab fa-figma"></i></div>
-                                        <div class="mini-link"><i class="fab fa-medium"></i></div>
-                                    </div>
-                                </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">Experience</div>
-                                    <div style="font-size: 0.8rem; line-height: 1.4;">
-                                        5+ years designing digital products for startups and enterprise companies.
-                                    </div>
-                                </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">Tools & Methods</div>
-                                    <div class="mini-skills">
-                                        <div class="mini-skill">Design Thinking</div>
-                                        <div class="mini-skill">User Testing</div>
-                                        <div class="mini-skill">Figma</div>
-                                        <div class="mini-skill">Prototyping</div>
+                                    <div class="modern-skills">
+                                        <div class="modern-skill">Design Thinking</div>
+                                        <div class="modern-skill">User Testing</div>
+                                        <div class="modern-skill">Figma</div>
+                                        <div class="modern-skill">Prototyping</div>
+                                        <div class="modern-skill">UI/UX</div>
                                     </div>
                                 </div>
                             </div>
@@ -859,34 +1273,40 @@
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <div class="mini-header">
-                                    <div class="mini-avatar">
-                                        <i class="fas fa-camera"></i>
+                                <div class="classic-layout">
+                                    <div class="classic-sidebar">
+                                        <div class="classic-avatar">
+                                            <i class="fas fa-camera"></i>
+                                        </div>
+                                        <div>
+                                            <div class="classic-name">Marwa Oum Laith</div>
+                                            <div class="classic-title">Photographer</div>
+                                        </div>
+                                        <div class="classic-links">
+                                            <div class="classic-link"><i class="fab fa-500px"></i> 500px</div>
+                                            <div class="classic-link"><i class="fab fa-instagram"></i> Instagram</div>
+                                        </div>
                                     </div>
-                                    <div class="mini-info">
-                                        <div class="mini-name">Marwa Oum Laith</div>
-                                        <div class="mini-title">Quran Teacher</div>
-                                    </div>
-                                    <div class="mini-links">
-                                        <div class="mini-link"><i class="fab fa-500px"></i></div>
-                                        <div class="mini-link"><i class="fab fa-instagram"></i></div>
-                                    </div>
-                                </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">Portfolio</div>
-                                    <div class="mini-projects">
-                                        <div class="mini-project">+1000 Student graduated</div>
-                                        <div class="mini-project">Ijazat in Reciting Mouton</div>
-                                   
-                                    </div>
-                                </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">Specializations</div>
-                                    <div class="mini-skills">
-                                        <div class="mini-skill">Portrait</div>
-                                        <div class="mini-skill">Landscape</div>
-                                        <div class="mini-skill">Fine Art</div>
-                                        <div class="mini-skill">Street</div>
+                                    <div class="classic-main">
+                                        <div class="classic-section">
+                                            <div class="classic-section-title">Portfolio</div>
+                                            <div class="classic-projects">
+                                                <div class="classic-project">Portrait Photography</div>
+                                                <div class="classic-project">Landscape Photography</div>
+                                                <div class="classic-project">Fine Art Photography</div>
+                                                <div class="classic-project">Street Photography</div>
+                                            </div>
+                                        </div>
+                                        <div class="classic-section">
+                                            <div class="classic-section-title">Specializations</div>
+                                            <div class="classic-skills">
+                                                <div class="classic-skill">Portrait</div>
+                                                <div class="classic-skill">Landscape</div>
+                                                <div class="classic-skill">Fine Art</div>
+                                                <div class="classic-skill">Street</div>
+                                                <div class="classic-skill">Black & White</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -915,35 +1335,45 @@
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <div class="mini-header">
-                                    <div class="mini-avatar">
-                                        <i class="fas fa-film"></i>
+                                <div class="animated-layout">
+                                    <div class="animated-header">
+                                        <div class="animated-avatar">
+                                            <i class="fas fa-film"></i>
+                                        </div>
+                                        <div class="animated-info">
+                                            <div class="animated-name">Loulita (Khairah)</div>
+                                            <div class="animated-title">Motion Designer</div>
+                                        </div>
+                                        <div class="animated-links">
+                                            <div class="animated-link"><i class="fab fa-vimeo"></i></div>
+                                            <div class="animated-link"><i class="fab fa-youtube"></i></div>
+                                        </div>
                                     </div>
-                                    <div class="mini-info">
-                                        <div class="mini-name">Loulita (Khairah)</div>
-                                        <div class="mini-title">Motion Designer</div>
+                                    <div class="animated-content">
+                                        <div class="animated-project">
+                                            <div class="animated-project-icon"><i class="fas fa-tv"></i></div>
+                                            <div class="animated-project-title">Brand Animation</div>
+                                        </div>
+                                        <div class="animated-project">
+                                            <div class="animated-project-icon"><i class="fas fa-mobile-alt"></i></div>
+                                            <div class="animated-project-title">UI Motion</div>
+                                        </div>
+                                        <div class="animated-project">
+                                            <div class="animated-project-icon"><i class="fas fa-video"></i></div>
+                                            <div class="animated-project-title">Explainer Video</div>
+                                        </div>
+                                        <div class="animated-project">
+                                            <div class="animated-project-icon"><i class="fas fa-user"></i></div>
+                                            <div class="animated-project-title">Character Anim</div>
+                                        </div>
                                     </div>
-                                    <div class="mini-links">
-                                        <div class="mini-link"><i class="fab fa-vimeo"></i></div>
-                                        <div class="mini-link"><i class="fab fa-youtube"></i></div>
-                                    </div>
-                                </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">Showreel Projects</div>
-                                    <div class="mini-projects">
-                                        <div class="mini-project">Brand Animation</div>
-                                        <div class="mini-project">UI Motion</div>
-                                        <div class="mini-project">Explainer Video</div>
-                                        <div class="mini-project">Character Anim</div>
-                                    </div>
-                                </div>
-                                <div class="mini-section">
-                                    <div class="mini-section-title">Software</div>
-                                    <div class="mini-skills">
-                                        <div class="mini-skill">After Effects</div>
-                                        <div class="mini-skill">Cinema 4D</div>
-                                        <div class="mini-skill">Principle</div>
-                                        <div class="mini-skill">Lottie</div>
+                                    <div class="animated-skills">
+                                        <div class="animated-skill">After Effects</div>
+                                        <div class="animated-skill">Cinema 4D</div>
+                                        <div class="animated-skill">Principle</div>
+                                        <div class="animated-skill">Lottie</div>
+                                        <div class="animated-skill">Animation</div>
+                                        <div class="animated-skill">Motion Graphics</div>
                                     </div>
                                 </div>
                             </div>
