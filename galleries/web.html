@@ -1,1 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta lang="en">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <meta charset="UTF-8">
+    <meta name="keywords" content="art,protfolio,artist,pixelart,2D,2Dstyle,artistic,commissions,games,game,indi games">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\styles.css">
+    <link rel="icon" type="image/x-icon" href="\pics\astronaut_hat_icon.png">
+    <title>Cadya protfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        .page-header {
+            text-align: center;
+            margin-top: 100px;
+            color: #22133b;
+            max-width: 90%;
+            
+            
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--first-color, #623bff);
+        }
+
+        .page-header p {
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            text-align: center;
+
+            }
+
+
+        .gallery {
+            background: linear-gradient(180deg, #fafaff 0%, #ffffff 100%);
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            gap: 100px;
+
+            height: 700px;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .column img {
+            width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .column img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .column a {
+            position: relative;
+            text-decoration: none;
+            display: block;
+        }
+
+        .column p {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            background-color: rgba(78, 20, 238, 0.4);
+            margin: 0;
+            padding: 8px;
+            border-radius: 0 0 8px 8px;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .column a:hover {
+            transform: scale(1.07);
+            transition: transform 0.3s;
+        }
+
+        .column a:hover p {
+            background-color: rgba(78, 20, 238, 0.6);
+            transition: background-color 0.3s;
+        }
+
+        @media screen and (max-width: 768px) {
+            .gallery {
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+                text-align: center;
+                margin: auto;
+            }
+
+            .column {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .column img {
+                width: 100%;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <a href="\index.html" class="nav__logo"><img src="\pics\logo.png" alt="Cadya logo" width="150"></a>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i> <!-- or any icon -->
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="\index.html" class="nav__link ">Home</a></li>
+                    <li class="nav__item"><a href="academy.html" class="nav__link">Academy</a></li>
+                    <li class="nav__item"><a href="gallery.html" class="nav__link active-link">Gallery</a></li>
+                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="l-main">
+        <section class="page-header">
+            <h1>Gallery</h1>
+            <p>Explore my work across web development, web & app development, design, and pixel art.</p>
+        </section>
+
+
+        <div class="gallery">
+            <div class="column">
+
+                <a href="web-development.html">
+                    <img src="\pics\ga1.png" alt="web development">
+                    <p>Web Development</p>
+                </a>
+
+                <a href="web-development.html">
+                    <img src="\pics\ga2.png" alt="web development">
+                    <p>Graphic Design</p>
+                </a>
+
+
+            </div>
+            <div class="column">
+                <a href="web-development.html">
+                    <img src="\pics\ga3.png" alt="web development">
+                    <p>App & Game Development</p>
+                </a>
+
+                <a href="https://www.instagram.com/cadya.art/">
+                    <img src="\pics\ga4.png" alt="pixel art">
+                    <p>Pixel Art</p>
+                </a>
+
+            </div>
+        </div>
+
+    </main>
+
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Khadidja</p>
+        <div class="footer__social">
+            <a href="mailto:khadidja7work@gmail.com" class="footer__icon" target="_blank"><i class='bx bxl-mail'></i></a>
+            <a href="https://www.instagram.com/cadya.art/" class="footer__icon" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="https://t.me/khadidja_dev_art" class="footer__icon" target="_blank" ><i class='bx bxl-telegram'></i></a>
+        </div>
+
+        <p class="footer__copy">© 2025 Khadidja Sayoud. All rights reserved.</p>
+
+    </footer>
+
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        const navMenu = document.getElementById("nav-menu"),
+            navToggle = document.getElementById("nav-toggle"),
+            navLinks = document.querySelectorAll(".nav__link");
+
+        // Open / close menu
+        navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link =>
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("show");
+            })
+        );
+    </script>
+
+
+</body>
+
+</html>
 
