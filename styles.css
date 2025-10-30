@@ -116,6 +116,7 @@ a {
 
 /*===== NAV =====*/
 .nav {
+  margin-top: 0.6rem;
   height: var(--header-height);
   display: flex;
   justify-content: space-between;
@@ -146,15 +147,19 @@ a {
   .nav__menu.show {
     right: 0;
   }
+
+
 }
 
 .nav__item {
+
+  padding: 0.5rem 1rem;
   margin: 1.5rem 0;
 }
 
 .nav__link {
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.2rem;
   position: relative;
 }
 
@@ -163,11 +168,15 @@ a {
   content: "";
   position: absolute;
   width: 100%;
-  height: 2px;
+  height: 3px;
   background-color: var(--first-color);
   left: 0;
-  bottom: -4px;
+  bottom: -8px;
+  border-radius: 10px;
+
 }
+
+
 
 .nav__toggle {
   color: var(--second-color);
@@ -193,85 +202,90 @@ a {
 /*===== HOME =====*/
 .home {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
-  gap: 4rem;
-  padding: 5rem 2rem;
-  text-align: left;
-  width: 100%;
+  align-items: center;
+  padding: 6rem 2rem;
+  background-color: #fff;
+}
+
+.home__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .home__data {
   flex: 1;
-  min-width: 300px;
 }
 
 .home__title {
-  font-size: 2.8rem;
-  line-height: 1.6;
-  margin: 2rem 0 2rem 0;
+  font-size: 3rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  margin-top: -3rem;
+}
 
+.home__subtitle {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .home__title-color {
   color: var(--first-color);
-  
 }
 
 .home__img {
-  flex: 0 1 300px;
-  display: none;
-  justify-content: center;
-  align-items: center;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .home__img img {
-  width: auto;
-  height: 500px; /* Keeps tall aspect ratio clean */
-  max-height: 80vh; /* Prevents overflow on small screens */
-  border-radius: 1rem;
-  object-fit: cover;
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+}
+
+.home__img img:hover {
+  transform: scale(1.05);
 }
 
 /* ✅ Responsive layout for tablets and below */
 @media screen and (max-width: 992px) {
-  .home {
+  .home__content {
     gap: 2rem;
-    padding: 3rem 1.5rem;
   }
 
   .home__title {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
   }
 
-  .home__img img {
-    height: 400px;
+  .home__subtitle {
+    font-size: 1.8rem;
   }
 }
 
-/* ✅ Stack cleanly on small screens */
+/* ✅ Stack on mobile screens */
 @media screen and (max-width: 768px) {
-  .home {
-    flex-direction: column;
+  .home__content {
+    flex-direction: column-reverse;
     text-align: center;
   }
 
-  .home__data {
-    order: 2;
-  }
-
   .home__img {
-    order: 1;
+    justify-content: center;
   }
 
   .home__img img {
-    height: 350px;
-    max-width: 90%;
+    max-width: 320px;
   }
-  
+
+  .button {
+    margin: 0 auto;
+  }
 }
 
 /*===== BUTTON =====*/
@@ -337,6 +351,12 @@ a {
   padding: 1.5rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+  
+  /* main fix: arrange text left, button right */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 .skill-box:hover {
@@ -348,6 +368,48 @@ a {
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
 }
+
+.skill-box img{
+  width: 40px;
+  height: auto;
+}
+
+.skill-box a{
+  margin-right: 6%;
+}
+
+.skill-box a:hover{
+  transform: translateX(5px) scale(1.1);
+}
+
+/* Arrow button on the right */
+.arrow-btn img {
+  width: 35px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.arrow-btn:hover img {
+  transform: translateX(5px) scale(1.1);
+}
+
+/* Make sure text doesn’t stretch */
+.skill-box > div {
+  flex: 1;
+}
+
+/* Responsive: stack if needed */
+@media (max-width: 600px) {
+  .skill-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .arrow-btn {
+    align-self: flex-end;
+  }
+}
+
 
 /*===== WORK =====*/
 .work__container {
@@ -380,7 +442,7 @@ a {
 
 .work__item p {
   text-align: justify;
-  
+
 }
 
 
@@ -467,6 +529,7 @@ a {
 
 /* ===== FIX IMAGE SIZES FOR MOBILE ===== */
 @media (max-width: 600px) {
+
   /* Home image */
   .home__img {
     width: 70%;
@@ -493,6 +556,11 @@ a {
   /* Center text and reduce large titles */
   .home__title {
     font-size: clamp(1.5rem, 5vw + 1rem, 1.8rem);
+  }
+
+
+  .home__subtitle {
+    font-size: clamp(1.2rem, 4vw + 0.8rem, 1.5rem);
   }
 
   .section-title {
