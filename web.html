@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="art,portfolio,artist,pixelart,2D,2Dstyle,artistic,commissions,games,game,indi games">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="pics\astronaut_hat_icon.png">
+    <title>Portfolio Gallery | Cadya</title>
+    <style>
+        :root {
+            --first-color: #623bff;
+            --second-color: #ff3b8d;
+            --third-color: #3bd1ff;
+            --dark-color: #22133b;
+            --light-color: #fafaff;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .l-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav__logo img {
+            width: 150px;
+            transition: var(--transition);
+        }
+
+        .nav__menu {
+            display: flex;
+        }
+
+        .nav__list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav__link:hover, .nav__link.active-link {
+            background-color: var(--first-color);
+            color: white;
+        }
+
+        .nav__toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            color: var(--first-color);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Gallery Styles */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: white;
+            border: 2px solid var(--first-color);
+            border-radius: 30px;
+            color: var(--first-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--first-color);
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-preview {
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-preview.minimalist {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .portfolio-preview.dark {
+            background: linear-gradient(135deg, #434343 0%, #000000 100%);
+        }
+
+        .portfolio-preview.creative {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .portfolio-preview.modern {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .portfolio-preview.classic {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .portfolio-preview.animated {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .portfolio-screen {
+            width: 85%;
+            height: 85%;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-header {
+            height: 40px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .control.close {
+            background: #ff5f57;
+        }
+
+        .control.minimize {
+            background: #ffbd2e;
+        }
+
+        .control.maximize {
+            background: #28ca42;
+        }
+
+        .portfolio-content {
+            padding: 20px;
+            height: calc(100% - 40px);
+            overflow: hidden;
+        }
+
+        /* Mini Portfolio Styles */
+        .mini-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .mini-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--first-color);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .mini-info {
+            flex: 1;
+        }
+
+        .mini-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .mini-title {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .mini-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .mini-link {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-color);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .mini-link:hover {
+            background: var(--first-color);
+            color: white;
+        }
+
+        .mini-section {
+            margin-bottom: 15px;
+        }
+
+        .mini-section-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+        }
+
+        .mini-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .mini-skill {
+            background: #f0f0f0;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+        }
+
+        .mini-projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .mini-project {
+            height: 40px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Dark mode specific styles */
+        .dark .portfolio-screen {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .dark .portfolio-header {
+            background: #2a2a2a;
+            border-bottom: 1px solid #333;
+        }
+
+        .dark .mini-link {
+            background: #333;
+            color: white;
+        }
+
+        .dark .mini-skill {
+            background: #333;
+            color: white;
+        }
+
+        .dark .mini-project {
+            background: #333;
+            color: white;
+        }
+
+        /* Minimalist specific styles */
+        .minimalist .portfolio-screen {
+            background: #ffffff;
+        }
+
+        .minimalist .mini-avatar {
+            background: #f5576c;
+        }
+
+        .minimalist .mini-link:hover {
+            background: #f5576c;
+        }
+
+        /* Creative specific styles */
+        .creative .portfolio-screen {
+            background: #ffffff;
+        }
+
+        .creative .mini-avatar {
+            background: #4facfe;
+        }
+
+        .creative .mini-link:hover {
+            background: #4facfe;
+        }
+
+        .creative .mini-skill {
+            background: #e6f4ff;
+        }
+
+        /* Modern specific styles */
+        .modern .portfolio-screen {
+            background: #ffffff;
+        }
+
+        .modern .mini-avatar {
+            background: #43e97b;
+        }
+
+        .modern .mini-link:hover {
+            background: #43e97b;
+        }
+
+        .modern .mini-project {
+            background: #e8f9ef;
+        }
+
+        /* Classic specific styles */
+        .classic .portfolio-screen {
+            background: #ffffff;
+        }
+
+        .classic .mini-avatar {
+            background: #fa709a;
+        }
+
+        .classic .mini-link:hover {
+            background: #fa709a;
+        }
+
+        .classic .mini-skill {
+            background: #ffeef4;
+        }
+
+        /* Animated specific styles */
+        .animated .portfolio-screen {
+            background: #ffffff;
+        }
+
+        .animated .mini-avatar {
+            background: #764ba2;
+        }
+
+        .animated .mini-link:hover {
+            background: #764ba2;
+        }
+
+        .animated .mini-project {
+            background: #f0e6ff;
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .portfolio-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer__title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer__social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer__icon {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .footer__icon:hover {
+            color: var(--first-color);
+            transform: translateY(-5px);
+        }
+
+        .footer__copy {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .portfolio-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .portfolio-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .portfolio-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .portfolio-item:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .portfolio-item:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .nav__menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 3rem;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav__menu.show {
+                right: 0;
+            }
+
+            .nav__list {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav__toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <a href="index.html" class="nav__logo"><img src="pics\logo.png" alt="Cadya logo" width="150"></a>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="academy.html" class="nav__link">Academy</a></li>
+                    <li class="nav__item"><a href="gallery.html" class="nav__link active-link">Gallery</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <section class="page-header">
+            <h1>Portfolio Gallery</h1>
+            <p>Explore my diverse portfolio designs showcasing different styles, layouts, and interactive elements. Each portfolio is crafted with attention to detail and user experience.</p>
+        </section>
+
+        <section class="gallery-container">
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="minimalist">Minimalist</button>
+                <button class="filter-btn" data-filter="dark">Dark Mode</button>
+                <button class="filter-btn" data-filter="creative">Creative</button>
+                <button class="filter-btn" data-filter="modern">Modern</button>
+                <button class="filter-btn" data-filter="classic">Classic</button>
+                <button class="filter-btn" data-filter="animated">Animated</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Portfolio Item 1 - Minimalist -->
+                <div class="portfolio-item" data-category="minimalist">
+                    <div class="portfolio-preview minimalist">
+                        <div class="portfolio-screen minimalist">
+                            <div class="portfolio-header">
+                                <div class="window-controls">
+                                    <div class="control close"></div>
+                                    <div class="control minimize"></div>
+                                    <div class="control maximize"></div>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <div class="mini-header">
+                                    <div class="mini-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="mini-info">
+                                        <div class="mini-name">Alex Johnson</div>
+                                        <div class="mini-title">UI/UX Designer</div>
+                                    </div>
+                                    <div class="mini-links">
+                                        <div class="mini-link"><i class="fab fa-dribbble"></i></div>
+                                        <div class="mini-link"><i class="fab fa-behance"></i></div>
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">About</div>
+                                    <div style="font-size: 0.8rem; line-height: 1.4;">
+                                        Creating clean, user-centered designs with a focus on simplicity and functionality.
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Skills</div>
+                                    <div class="mini-skills">
+                                        <div class="mini-skill">UI Design</div>
+                                        <div class="mini-skill">UX Research</div>
+                                        <div class="mini-skill">Figma</div>
+                                        <div class="mini-skill">Prototyping</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Minimalist Elegance</h3>
+                        <p class="portfolio-description">Clean design with ample white space, focused on typography and essential elements only.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Clean</span>
+                            <span class="tag">Typography</span>
+                            <span class="tag">White Space</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 - Dark Mode -->
+                <div class="portfolio-item" data-category="dark">
+                    <div class="portfolio-preview dark">
+                        <div class="portfolio-screen dark">
+                            <div class="portfolio-header">
+                                <div class="window-controls">
+                                    <div class="control close"></div>
+                                    <div class="control minimize"></div>
+                                    <div class="control maximize"></div>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <div class="mini-header">
+                                    <div class="mini-avatar" style="background: #ff3b8d;">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="mini-info">
+                                        <div class="mini-name">Sarah Chen</div>
+                                        <div class="mini-title">Full Stack Developer</div>
+                                    </div>
+                                    <div class="mini-links">
+                                        <div class="mini-link"><i class="fab fa-github"></i></div>
+                                        <div class="mini-link"><i class="fab fa-codepen"></i></div>
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Projects</div>
+                                    <div class="mini-projects">
+                                        <div class="mini-project">E-commerce App</div>
+                                        <div class="mini-project">Task Manager</div>
+                                        <div class="mini-project">Weather API</div>
+                                        <div class="mini-project">Portfolio Site</div>
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Technologies</div>
+                                    <div class="mini-skills">
+                                        <div class="mini-skill">React</div>
+                                        <div class="mini-skill">Node.js</div>
+                                        <div class="mini-skill">MongoDB</div>
+                                        <div class="mini-skill">AWS</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Dark Professional</h3>
+                        <p class="portfolio-description">Sophisticated dark theme with neon accents, perfect for developers and designers.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Dark Theme</span>
+                            <span class="tag">Professional</span>
+                            <span class="tag">Neon Accents</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 - Creative -->
+                <div class="portfolio-item" data-category="creative">
+                    <div class="portfolio-preview creative">
+                        <div class="portfolio-screen creative">
+                            <div class="portfolio-header">
+                                <div class="window-controls">
+                                    <div class="control close"></div>
+                                    <div class="control minimize"></div>
+                                    <div class="control maximize"></div>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <div class="mini-header">
+                                    <div class="mini-avatar">
+                                        <i class="fas fa-palette"></i>
+                                    </div>
+                                    <div class="mini-info">
+                                        <div class="mini-name">Maya Rodriguez</div>
+                                        <div class="mini-title">Illustrator & Artist</div>
+                                    </div>
+                                    <div class="mini-links">
+                                        <div class="mini-link"><i class="fab fa-instagram"></i></div>
+                                        <div class="mini-link"><i class="fab fa-artstation"></i></div>
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Featured Work</div>
+                                    <div class="mini-projects">
+                                        <div class="mini-project">Character Design</div>
+                                        <div class="mini-project">Book Cover</div>
+                                        <div class="mini-project">Album Art</div>
+                                        <div class="mini-project">Concept Art</div>
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Specialties</div>
+                                    <div class="mini-skills">
+                                        <div class="mini-skill">Digital Painting</div>
+                                        <div class="mini-skill">Character Design</div>
+                                        <div class="mini-skill">Illustration</div>
+                                        <div class="mini-skill">Concept Art</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Creative Artist</h3>
+                        <p class="portfolio-description">Colorful and expressive design with artistic elements and custom illustrations.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Colorful</span>
+                            <span class="tag">Artistic</span>
+                            <span class="tag">Illustrations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 - Modern -->
+                <div class="portfolio-item" data-category="modern">
+                    <div class="portfolio-preview modern">
+                        <div class="portfolio-screen modern">
+                            <div class="portfolio-header">
+                                <div class="window-controls">
+                                    <div class="control close"></div>
+                                    <div class="control minimize"></div>
+                                    <div class="control maximize"></div>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <div class="mini-header">
+                                    <div class="mini-avatar">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div class="mini-info">
+                                        <div class="mini-name">James Wilson</div>
+                                        <div class="mini-title">Product Designer</div>
+                                    </div>
+                                    <div class="mini-links">
+                                        <div class="mini-link"><i class="fab fa-figma"></i></div>
+                                        <div class="mini-link"><i class="fab fa-medium"></i></div>
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Experience</div>
+                                    <div style="font-size: 0.8rem; line-height: 1.4;">
+                                        5+ years designing digital products for startups and enterprise companies.
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Tools & Methods</div>
+                                    <div class="mini-skills">
+                                        <div class="mini-skill">Design Thinking</div>
+                                        <div class="mini-skill">User Testing</div>
+                                        <div class="mini-skill">Figma</div>
+                                        <div class="mini-skill">Prototyping</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Modern Card-based</h3>
+                        <p class="portfolio-description">Contemporary design with card-based layout, shadows, and smooth animations.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Modern</span>
+                            <span class="tag">Card Layout</span>
+                            <span class="tag">Animations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 - Classic -->
+                <div class="portfolio-item" data-category="classic">
+                    <div class="portfolio-preview classic">
+                        <div class="portfolio-screen classic">
+                            <div class="portfolio-header">
+                                <div class="window-controls">
+                                    <div class="control close"></div>
+                                    <div class="control minimize"></div>
+                                    <div class="control maximize"></div>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <div class="mini-header">
+                                    <div class="mini-avatar">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                    <div class="mini-info">
+                                        <div class="mini-name">Olivia Parker</div>
+                                        <div class="mini-title">Photographer</div>
+                                    </div>
+                                    <div class="mini-links">
+                                        <div class="mini-link"><i class="fab fa-500px"></i></div>
+                                        <div class="mini-link"><i class="fab fa-instagram"></i></div>
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Portfolio</div>
+                                    <div class="mini-projects">
+                                        <div class="mini-project">Portrait Series</div>
+                                        <div class="mini-project">Landscape</div>
+                                        <div class="mini-project">Street Photo</div>
+                                        <div class="mini-project">Fine Art</div>
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Specializations</div>
+                                    <div class="mini-skills">
+                                        <div class="mini-skill">Portrait</div>
+                                        <div class="mini-skill">Landscape</div>
+                                        <div class="mini-skill">Fine Art</div>
+                                        <div class="mini-skill">Street</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Classic Portfolio</h3>
+                        <p class="portfolio-description">Timeless design with elegant typography and traditional portfolio layout.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Classic</span>
+                            <span class="tag">Elegant</span>
+                            <span class="tag">Traditional</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 - Animated -->
+                <div class="portfolio-item" data-category="animated">
+                    <div class="portfolio-preview animated">
+                        <div class="portfolio-screen animated">
+                            <div class="portfolio-header">
+                                <div class="window-controls">
+                                    <div class="control close"></div>
+                                    <div class="control minimize"></div>
+                                    <div class="control maximize"></div>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <div class="mini-header">
+                                    <div class="mini-avatar">
+                                        <i class="fas fa-film"></i>
+                                    </div>
+                                    <div class="mini-info">
+                                        <div class="mini-name">David Kim</div>
+                                        <div class="mini-title">Motion Designer</div>
+                                    </div>
+                                    <div class="mini-links">
+                                        <div class="mini-link"><i class="fab fa-vimeo"></i></div>
+                                        <div class="mini-link"><i class="fab fa-youtube"></i></div>
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Showreel Projects</div>
+                                    <div class="mini-projects">
+                                        <div class="mini-project">Brand Animation</div>
+                                        <div class="mini-project">UI Motion</div>
+                                        <div class="mini-project">Explainer Video</div>
+                                        <div class="mini-project">Character Anim</div>
+                                    </div>
+                                </div>
+                                <div class="mini-section">
+                                    <div class="mini-section-title">Software</div>
+                                    <div class="mini-skills">
+                                        <div class="mini-skill">After Effects</div>
+                                        <div class="mini-skill">Cinema 4D</div>
+                                        <div class="mini-skill">Principle</div>
+                                        <div class="mini-skill">Lottie</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Animated Showcase</h3>
+                        <p class="portfolio-description">Dynamic portfolio with smooth animations, transitions, and interactive elements.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Animated</span>
+                            <span class="tag">Interactive</span>
+                            <span class="tag">Dynamic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer" class="contact">
+        <p class="footer__title">Khadidja</p>
+        <div class="footer__social">
+            <a href="mailto:khadidja7work@gmail.com" class="footer__icon" target="_blank"><i class='bx bxl-gmail'></i></a>
+            <a href="https://www.instagram.com/cadya.art/" class="footer__icon" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="https://t.me/khadidja_dev_art" class="footer__icon" target="_blank"><i class='bx bxl-telegram'></i></a>
+        </div>
+        <p class="footer__copy">© 2025 Khadidja Sayoud. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const navMenu = document.getElementById("nav-menu"),
+            navToggle = document.getElementById("nav-toggle"),
+            navLinks = document.querySelectorAll(".nav__link");
+
+        navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+        });
+
+        navLinks.forEach(link =>
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("show");
+            })
+        );
+
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove("active"));
+                
+                // Add active class to clicked button
+                button.classList.add("active");
+                
+                const filterValue = button.getAttribute("data-filter");
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === "all" || item.getAttribute("data-category") === filterValue) {
+                        item.style.display = "block";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener("scroll", function() {
+            const header = document.querySelector(".l-header");
+            if (window.scrollY > 50) {
+                header.style.background = "rgba(255, 255, 255, 0.98)";
+                header.style.boxShadow = "0 5px 20px rgba(0, 0, 0, 0.1)";
+            } else {
+                header.style.background = "rgba(255, 255, 255, 0.95)";
+                header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+            }
+        });
+    </script>
+</body>
+
+</html>
