@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta lang="en">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="art,protfolio,artist,pixelart,2D,2Dstyle,artistic,commissions,games,game,indi games">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="pics\astronaut_hat_icon.png">
+    <title>Cadya protfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        main.l-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 20px;
+        }
+
+        main.l-main img {
+            width: 60%;
+            height: auto;
+        }
+
+        main.l-main p {
+            font-size: 3rem;
+            color: #4e0f88;
+
+        }
+    </style>
+</head>
+
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <a href="index.html" class="nav__logo"><img src="pics\logo.png" alt="Cadya logo" width="150"></a>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i> <!-- or any icon -->
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="academy.html" class="nav__link">Academy</a></li>
+                    <li class="nav__item"><a href="gallery.html" class="nav__link active-link">Gallery</a></li>
+    
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="l-main">
+        <img src="pics/Loading.gif" alt="">
+        <p>COMING SOON</p>
+
+    </main>
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Khadidja</p>
+        <div class="footer__social">
+            <a href="https://t.me/khadidja_dev_art" class="footer__icon"><i class='bx bxl-telegram'></i></a>
+            <a href="mailto:khadidja7work@gmail.com" class="footer__icon"><i class='bx bxl-gmail'></i></a>
+            <a href="https://www.instagram.com/cadya.art/" class="footer__icon" target="_blank"><i
+                    class='bx bxl-instagram'></i></a>
+            <a href="https://wa.me/213792211652" class="footer__icon"><i class='bx bxl-whatsapp'></i></a>
+        </div>
+
+        <p class="footer__copy">© 2025 Khadidja Sayoud. All rights reserved.</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+
+            // Set your launch date here (YYYY, MM-1, DD, HH, MM, SS)
+            const launchDate = new Date(2025, 5, 15, 0, 0, 0).getTime();
+            const now = new Date().getTime();
+            const timeLeft = launchDate - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                daysElement.textContent = days.toString().padStart(2, '0');
+                hoursElement.textContent = hours.toString().padStart(2, '0');
+                minutesElement.textContent = minutes.toString().padStart(2, '0');
+                secondsElement.textContent = seconds.toString().padStart(2, '0');
+            } else {
+                // Countdown finished
+                daysElement.textContent = '00';
+                hoursElement.textContent = '00';
+                minutesElement.textContent = '00';
+                secondsElement.textContent = '00';
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+        // Form submission
+        document.querySelector('.notify-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = this.querySelector('.notify-input').value;
+            alert(`Thank you! We'll notify you at ${email} when we launch.`);
+            this.querySelector('.notify-input').value = '';
+        });
+
+        // Navigation menu toggle
+        const navMenu = document.getElementById("nav-menu"),
+            navToggle = document.getElementById("nav-toggle"),
+            navLinks = document.querySelectorAll(".nav__link");
+
+        // Open / close menu
+        navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link =>
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("show");
+            })
+        );
+    </script>
+</body>
+
+</html>

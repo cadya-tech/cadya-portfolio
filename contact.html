@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me – Cadya</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        :root {
+            --primary-color: #623bff;
+            --secondary-color: #8a6cff;
+            --accent-color: #ff6b8b;
+            --dark-color: #22133b;
+            --light-color: #fafaff;
+            --text-color: #333;
+            --text-light: #777;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: var(--light-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        main {
+            margin-top: 120px;
+            padding: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-header h1 {
+            font-size: 3rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .contact-header h1 span {
+            color: var(--primary-color);
+        }
+
+        .contact-header p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* Contact Container */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        @media(max-width: 800px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Info Box */
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .info-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            background: #f3efff;
+            padding: 0.8rem;
+            border-radius: 12px;
+        }
+
+        .info-item:hover {
+            transform: translateX(8px);
+        }
+
+        .info-item h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+
+        .info-item p a {
+            text-decoration: none;
+            color: var(--text-light);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--dark-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(98, 59, 255, 0.2);
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+            height: 140px;
+        }
+
+        /* Button */
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (same as your site) -->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <a href="index.html" class="nav__logo"><img src="pics/logo.png" width="150"></a>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="gallery.html" class="nav__link">Gallery</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link active-link">Contact</a></li>
+                    <li class="nav__item"><a href="academy.html" class="nav__link">Academy</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="contact-header">
+            <h1>Get in <span>Touch</span></h1>
+            <p>I’d love to hear from you! Whether you want to start a project, ask a question, or just say hello — feel
+                free to send a message.</p>
+        </div>
+
+        <div class="contact-container">
+
+            <!-- CONTACT INFO -->
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class='bx bxl-gmail'></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:khadidja7work@gmail.com">khadidja7work@gmail.com</a></p>
+                    </div>
+                </div>
+
+
+
+                <div class="info-item">
+                    <i class='bx bxl-telegram'></i>
+                    <div>
+                        <h4>Telegram</h4>
+                        <p><a href="https://t.me/khadidja_dev_art">@khadidja_dev_art</a></p>
+                    </div>
+                </div>
+
+
+
+                <div class="info-item">
+                    <i class='bx bxl-instagram'></i>
+                    <div>
+                        <h4>Instagram</h4>
+                        <p><a href="https://www.instagram.com/cadya.art/" target="_blank">@cadya.art</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class='bx bxl-whatsapp'></i>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/213792211652">+213 792 211 652</a></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CONTACT FORM -->
+            <div class="contact-form">
+                <form id="telegramForm">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" required></textarea>
+                    </div>
+
+                    <button class="submit-btn" type="submit">Send Message</button>
+                </form>
+            </div>
+
+
+
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p class="footer__title">Khadidja</p>
+        <div class="footer__social">
+            <a href="https://t.me/khadidja_dev_art" class="footer__icon"><i class='bx bxl-telegram'></i></a>
+            <a href="mailto:khadidja7work@gmail.com" class="footer__icon"><i class='bx bxl-gmail'></i></a>
+            <a href="https://www.instagram.com/cadya.art/" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+            <a href="https://wa.me/213792211652" class="footer__icon"><i class='bx bxl-whatsapp'></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // ----------- CONFIG -----------
+        // Replace these with your values:
+        const BOT_TOKEN = "7992547809:AAGOeLbw4AYL2VHFP-RwwtkXFzIUPR4erYs";
+        const CHAT_ID = "7847132224";
+        // ------------------------------
+
+        document.getElementById("telegramForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = this.name.value;
+            const email = this.email.value;
+            const message = this.message.value;
+
+            const text =
+                `📩 NEW FORM SUBMISSION
+
+👤 Name: ${name}
+📧 Email: ${email}
+
+💬 Message:
+${message}`;
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            const data = {
+                chat_id: CHAT_ID,
+                text: text
+            };
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Message sent successfully!");
+                        document.getElementById("telegramForm").reset();
+                    } else {
+                        alert("Failed to send message.");
+                    }
+                })
+                .catch(error => {
+                    alert("Error: " + error);
+                });
+        });
+    </script>
+
+</body>
+
+</html>
