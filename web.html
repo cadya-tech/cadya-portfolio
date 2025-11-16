@@ -2,1000 +2,297 @@
 <html lang="en">
 
 <head>
+    <meta lang="en">
     <meta charset="UTF-8">
-    <meta name="keywords" content="art,portfolio,artist,pixelart,2D,2Dstyle,artistic,commissions,games,game,indi games">
+    <meta name="keywords" content="art,protfolio,artist,pixelart,2D,2Dstyle,artistic,commissions,games,game,indi games">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="pics\astronaut_hat_icon.png">
-    <title>Portfolio Gallery | Cadya</title>
-    <style>
-        :root {
-            --first-color: #623bff;
-            --second-color: #ff3b8d;
-            --third-color: #3bd1ff;
-            --dark-color: #22133b;
-            --light-color: #fafaff;
-            --white: #ffffff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
+    <title>Cadya protfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap');
+
+        /* Modern CSS Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: var(--dark-color);
-            overflow-x: hidden;
+        /* Variables */
+        :root {
+            --primary-color: #623bff;
+            --secondary-color: #f5f5f7;
+            --text-dark: #1d1d1f;
+            --text-light: #86868b;
+            --spacing-xl: 120px;
+            --spacing-lg: 80px;
+            --spacing-md: 40px;
+            --spacing-sm: 20px;
+            --border-radius: 16px;
+            --transition: all 0.3s ease;
         }
 
-        /* Header Styles */
-        .l-header {
-            position: fixed;
-            top: 0;
+        /* Typography */
+        .title {
+            text-align: center;
+            margin: var(--spacing-xl) auto var(--spacing-lg);
+            color: var(--text-dark);
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 800px;
+            padding: 0 var(--spacing-md);
+
+        }
+
+        .title span {
+            color: var(--primary-color);
+            position: relative;
+
+        }
+
+        .title span::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
             left: 0;
             width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
         }
 
-        .nav {
+        /* Horizontal Scroll Section */
+        .styles-horizontal-container {
+            width: 100%;
+            overflow-x: auto;
+            padding: var(--spacing-md) 0;
+            margin-bottom: var(--spacing-xl);
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) #f0f0f0;
+        }
+
+        .styles-horizontal-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .styles-horizontal-container::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .styles-horizontal-container::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .styles-horizontal-wrapper {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: var(--spacing-md);
+            padding: 0 var(--spacing-md);
+            width: max-content;
         }
 
-        .nav__logo img {
-            width: 150px;
-            transition: var(--transition);
-        }
-
-        .nav__menu {
-            display: flex;
-        }
-
-        .nav__list {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav__link {
-            text-decoration: none;
-            color: var(--dark-color);
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: var(--transition);
-        }
-
-        .nav__link:hover, .nav__link.active-link {
-            background-color: var(--first-color);
-            color: white;
-        }
-
-        .nav__toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Main Content */
-        main {
-            margin-top: 80px;
-            padding: 2rem;
-        }
-
-        .page-header {
-            text-align: center;
-            margin: 3rem auto;
-            max-width: 800px;
-        }
-
-        .page-header h1 {
-            font-size: 3.5rem;
-            color: var(--first-color);
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .page-header p {
-            font-size: 1.3rem;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        /* Gallery Styles */
-        .gallery-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .portfolio-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .filter-btn {
-            padding: 0.7rem 1.5rem;
-            background: white;
-            border: 2px solid var(--first-color);
-            border-radius: 30px;
-            color: var(--first-color);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--first-color);
-            color: white;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .portfolio-item {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 0.6s forwards;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .portfolio-preview {
-            height: 320px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Different backgrounds for each portfolio */
-        .portfolio-preview.minimalist {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .portfolio-preview.dark {
-            background: linear-gradient(135deg, #434343 0%, #000000 100%);
-        }
-
-        .portfolio-preview.creative {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .portfolio-preview.modern {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-
-        .portfolio-preview.classic {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-        }
-
-        .portfolio-preview.animated {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .portfolio-screen {
-            width: 85%;
-            height: 85%;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .portfolio-header {
-            height: 40px;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            border-bottom: 1px solid #eaeaea;
-        }
-
-        .window-controls {
-            display: flex;
-            gap: 8px;
-        }
-
-        .control {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .control.close {
-            background: #ff5f57;
-        }
-
-        .control.minimize {
-            background: #ffbd2e;
-        }
-
-        .control.maximize {
-            background: #28ca42;
-        }
-
-        .portfolio-content {
-            padding: 20px;
-            height: calc(100% - 40px);
-            overflow: hidden;
-        }
-
-        /* Different layouts for each portfolio style */
-        
-        /* Minimalist Layout */
-        .minimalist-layout {
+        /* Style Sections - Horizontal Layout */
+        .style-horizontal {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            text-align: center;
-        }
-        
-        .minimalist-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: #f5576c;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-        }
-        
-        .minimalist-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .minimalist-title {
-            font-size: 1rem;
-            opacity: 0.7;
-            margin-bottom: 15px;
-        }
-        
-        .minimalist-divider {
-            width: 50px;
-            height: 2px;
-            background: #f5576c;
-            margin: 15px 0;
-        }
-        
-        .minimalist-tagline {
-            font-size: 0.9rem;
-            line-height: 1.4;
-            max-width: 80%;
-        }
-        
-        /* Dark Layout */
-        .dark-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            height: 100%;
-        }
-        
-        .dark-left, .dark-right {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        .dark-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #ff3b8d;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .dark-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .dark-title {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            margin-bottom: 15px;
-        }
-        
-        .dark-projects {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-        }
-        
-        .dark-project {
-            background: #f0f0f0;
-            padding: 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-        }
-        
-        .dark-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        
-        .dark-skill {
-            background: #f0f0f0;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-        }
-        
-        /* Creative Layout */
-        .creative-layout {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: auto 1fr;
-            gap: 15px;
-            height: 100%;
-        }
-        
-        .creative-header {
-            grid-column: 1 / -1;
-            display: flex;
-            align-items: center;
-        }
-        
-        .creative-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #4facfe;
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .creative-info {
-            flex: 1;
-        }
-        
-        .creative-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .creative-title {
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-        
-        .creative-links {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .creative-link {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-color);
-            font-size: 0.9rem;
+            width: 45vw;
+            max-width: 600px;
+            min-width: 400px;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            position: relative;
+            flex-shrink: 0;
             transition: var(--transition);
-        }
-        
-        .creative-projects {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-        
-        .creative-project {
-            background: #e6f4ff;
-            border-radius: 8px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        
-        .creative-project-icon {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-            color: #4facfe;
-        }
-        
-        .creative-project-title {
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-        
-        .creative-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            align-content: flex-start;
-        }
-        
-        .creative-skill {
-            background: #e6f4ff;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
             height: fit-content;
         }
-        
-        /* Modern Layout */
-        .modern-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: auto 1fr auto;
-            gap: 15px;
-            height: 100%;
-        }
-        
-        .modern-header {
-            display: flex;
-            align-items: center;
-        }
-        
-        .modern-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #43e97b;
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .modern-info {
-            flex: 1;
-        }
-        
-        .modern-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .modern-title {
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-        
-        .modern-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .modern-tagline {
-            font-size: 0.9rem;
-            line-height: 1.4;
-            margin-bottom: 15px;
-        }
-        
-        .modern-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        
-        .modern-stat {
-            text-align: center;
-        }
-        
-        .modern-stat-value {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #43e97b;
-        }
-        
-        .modern-stat-label {
-            font-size: 0.7rem;
-            opacity: 0.7;
-        }
-        
-        .modern-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        
-        .modern-skill {
-            background: #e8f9ef;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-        }
-        
-        /* Classic Layout */
-        .classic-layout {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 15px;
-            height: 100%;
-        }
-        
-        .classic-sidebar {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .classic-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: #fa709a;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-        }
-        
-        .classic-name {
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 5px;
-            text-align: center;
-        }
-        
-        .classic-title {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        
-        .classic-links {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            width: 100%;
-        }
-        
-        .classic-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.8rem;
-            padding: 5px 0;
-        }
-        
-        .classic-link i {
-            width: 20px;
-            text-align: center;
-        }
-        
-        .classic-main {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        .classic-section {
-            margin-bottom: 10px;
-        }
-        
-        .classic-section-title {
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-            color: var(--dark-color);
-        }
-        
-        .classic-projects {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-        }
-        
-        .classic-project {
-            background: #ffeef4;
-            padding: 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-        }
-        
-        .classic-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        
-        .classic-skill {
-            background: #ffeef4;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-        }
-        
-        /* Animated Layout */
-        .animated-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: auto 1fr auto;
-            gap: 15px;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .animated-header {
-            display: flex;
-            align-items: center;
-        }
-        
-        .animated-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #764ba2;
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .animated-info {
-            flex: 1;
-        }
-        
-        .animated-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .animated-title {
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-        
-        .animated-links {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .animated-link {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-color);
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-        
-        .animated-content {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-        
-        .animated-project {
-            background: #f0e6ff;
-            border-radius: 8px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        
-        .animated-project-icon {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: #764ba2;
-        }
-        
-        .animated-project-title {
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-        
-        .animated-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        
-        .animated-skill {
-            background: #f0e6ff;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-        }
-        
-        /* Portfolio Info Styles */
-        .portfolio-info {
-            padding: 1.5rem;
-        }
 
-        .portfolio-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-        }
-
-        .portfolio-description {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            background: #f0f0f0;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: #555;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark-color);
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 5rem;
-        }
-
-        .footer__title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer__social {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer__icon {
-            color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .footer__icon:hover {
-            color: var(--first-color);
+        .style-horizontal:hover {
             transform: translateY(-5px);
         }
 
-        .footer__copy {
-            opacity: 0.7;
-            font-size: 0.9rem;
+        .style-horizontal .content-wrapper {
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Animations */
+        .style-horizontal .stylename {
+            color: var(--text-dark);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.3;
+        }
+
+        .style-horizontal .description {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: var(--spacing-sm);
+            flex-grow: 1;
+        }
+
+        .style-horizontal .preview-container {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--spacing-sm);
+        }
+
+        .style-horizontal .preview-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: calc(var(--border-radius) - 8px);
+            max-height: 180px;
+            object-fit: contain;
+        }
+
+        .style-horizontal .featured-image {
+            width: 100%;
+            height: auto;
+            border-radius: calc(var(--border-radius) - 8px);
+            margin-bottom: var(--spacing-sm);
+            max-height: 200px;
+            object-fit: contain;
+        }
+
+        /* Modern Section Specific */
+        .modern-horizontal {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .modern-horizontal .stylename {
+            color: var(--primary-color);
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+
+        .modern-horizontal .stylename::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Dark Minimalist */
+        .dark-minimalist {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+        }
+
+        .dark-minimalist .stylename {
+            color: white;
+        }
+
+        .dark-minimalist .description {
+            color: #b0b0b0;
+        }
+
+        /* Glassmorphic Style */
+        .glassmorphic-horizontal {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glassmorphic-horizontal .stylename {
+            background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+
+
+        /* Retro-Futuristic Style */
+        .retro-futuristic-horizontal {
+            background: #13346d;
+            color: white;
+        }
+
+        .retro-futuristic-horizontal .stylename {
+            color: #b49dd7;
+            font-family: "Fascinate Inline", system-ui;
+            font-size: 2.5rem;
+        }
+
+        .retro-futuristic-horizontal .description {
+            color: #d5c5ee;
+        }
+
+        /* Additional Animations */
+        .style-horizontal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
         @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .portfolio-item:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        .portfolio-item:nth-child(3) {
+        .style-horizontal:nth-child(1) {
             animation-delay: 0.2s;
         }
 
-        .portfolio-item:nth-child(4) {
-            animation-delay: 0.3s;
-        }
-
-        .portfolio-item:nth-child(5) {
+        .style-horizontal:nth-child(2) {
             animation-delay: 0.4s;
         }
 
-        .portfolio-item:nth-child(6) {
-            animation-delay: 0.5s;
+        .style-horizontal:nth-child(3) {
+            animation-delay: 0.6s;
         }
 
-        /* Responsive */
+        .style-horizontal:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        /* Responsive Design */
         @media screen and (max-width: 768px) {
-            .nav__menu {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 80%;
-                height: calc(100vh - 70px);
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 3rem;
-                transition: var(--transition);
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            .style-horizontal {
+                width: 70vw;
+                min-width: 300px;
             }
 
-            .nav__menu.show {
-                right: 0;
-            }
-
-            .nav__list {
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav__toggle {
-                display: block;
-            }
-
-            .page-header h1 {
+            .title {
                 font-size: 2.5rem;
+                padding: 0 var(--spacing-sm);
             }
 
-            .portfolio-grid {
-                grid-template-columns: 1fr;
+            .style-horizontal .stylename {
+                font-size: 1.8rem;
             }
-            
-            .gallery-container {
-                padding: 1rem;
-            }
-            
-            main {
-                padding: 1rem;
-            }
-            
-            /* Adjust layouts for mobile */
-            .dark-layout {
-                grid-template-columns: 1fr;
-            }
-            
-            .creative-layout {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto;
-            }
-            
-            .creative-projects {
-                grid-column: 1;
-            }
-            
-            .creative-skills {
-                grid-column: 1;
-            }
-            
-            .classic-layout {
-                grid-template-columns: 1fr;
-            }
-            
-            .classic-sidebar {
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 10px 0;
-            }
-            
-            .classic-avatar {
-                margin-bottom: 0;
-                margin-right: 15px;
-            }
-            
-            .classic-links {
-                flex-direction: row;
-                justify-content: flex-end;
-            }
-            
-            .classic-link {
-                padding: 0 5px;
-            }
-            
-            .animated-content {
-                grid-template-columns: 1fr;
-            }
-        }
 
-        @media screen and (max-width: 480px) {
-            .page-header h1 {
+            .retro-futuristic-horizontal .stylename {
                 font-size: 2rem;
             }
-            
-            .page-header p {
-                font-size: 1rem;
+
+            .style-horizontal .featured-image {
+                max-height: 150px;
             }
-            
-            .portfolio-filters {
-                gap: 0.5rem;
-            }
-            
-            .filter-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-            
-            .portfolio-preview {
-                height: 280px;
-            }
-            
-            .portfolio-screen {
-                width: 90%;
-                height: 90%;
-            }
-            
-            .classic-sidebar {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .classic-avatar {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            
-            .classic-links {
-                justify-content: center;
+
+            .style-horizontal .preview-container img {
+                max-height: 120px;
             }
         }
     </style>
@@ -1005,457 +302,147 @@
     <!--===== HEADER =====-->
     <header class="l-header">
         <nav class="nav bd-grid">
-            <a href="index.html" class="nav__logo"><img src="pics\logo.png" alt="Cadya logo" width="150"></a>
+            <a href="#" class="nav__logo"><img src="pics\logo.png" alt="Cadya logo" width="150"></a>
 
             <div class="nav__toggle" id="nav-toggle">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars"></i> <!-- or any icon -->
             </div>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="academy.html" class="nav__link">Academy</a></li>
+                    <li class="nav__item"><a href="index.html" class="nav__link ">Home</a></li>
                     <li class="nav__item"><a href="gallery.html" class="nav__link active-link">Gallery</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><a href="academy.html" class="nav__link">Academy</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main class="l-main">
-        <section class="page-header">
-            <h1>Portfolio Gallery</h1>
-            <p>Explore my diverse portfolio designs showcasing different styles, layouts, and interactive elements. Each portfolio is crafted with attention to detail and user experience.</p>
-        </section>
 
-        <section class="gallery-container">
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="minimalist">Minimalist</button>
-                <button class="filter-btn" data-filter="dark">Dark Mode</button>
-                <button class="filter-btn" data-filter="creative">Creative</button>
-                <button class="filter-btn" data-filter="modern">Modern</button>
-                <button class="filter-btn" data-filter="classic">Classic</button>
-                <button class="filter-btn" data-filter="animated">Animated</button>
-            </div>
-
-            <div class="portfolio-grid">
-                <!-- Portfolio Item 1 - Minimalist -->
-                <div class="portfolio-item" data-category="minimalist">
-                    <div class="portfolio-preview minimalist">
-                        <div class="portfolio-screen minimalist">
-                            <div class="portfolio-header">
-                                <div class="window-controls">
-                                    <div class="control close"></div>
-                                    <div class="control minimize"></div>
-                                    <div class="control maximize"></div>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <div class="minimalist-layout">
-                                    <div class="minimalist-avatar">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <div class="minimalist-name">Sarah Ayat</div>
-                                    <div class="minimalist-title">UI/UX Designer</div>
-                                    <div class="minimalist-divider"></div>
-                                    <div class="minimalist-tagline">Creating clean, user-centered designs with a focus on simplicity and functionality.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Minimalist Elegance</h3>
-                        <p class="portfolio-description">Clean design with ample white space, focused on typography and essential elements only.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Clean</span>
-                            <span class="tag">Typography</span>
-                            <span class="tag">White Space</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 2 - Dark Mode -->
-                <div class="portfolio-item" data-category="dark">
-                    <div class="portfolio-preview dark">
-                        <div class="portfolio-screen dark">
-                            <div class="portfolio-header">
-                                <div class="window-controls">
-                                    <div class="control close"></div>
-                                    <div class="control minimize"></div>
-                                    <div class="control maximize"></div>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <div class="dark-layout">
-                                    <div class="dark-left">
-                                        <div>
-                                            <div class="dark-avatar">
-                                                <i class="fas fa-code"></i>
-                                            </div>
-                                            <div class="dark-name">Fatimah Dy</div>
-                                            <div class="dark-title">Frontend Developer</div>
-                                        </div>
-                                        <div class="dark-skills">
-                                            <div class="dark-skill">HTML/CSS</div>
-                                            <div class="dark-skill">JavaScript</div>
-                                            <div class="dark-skill">React</div>
-                                            <div class="dark-skill">Vue.js</div>
-                                        </div>
-                                    </div>
-                                    <div class="dark-right">
-                                        <div class="dark-projects">
-                                            <div class="dark-project">E-commerce Platform</div>
-                                            <div class="dark-project">Dashboard UI</div>
-                                            <div class="dark-project">Mobile App</div>
-                                            <div class="dark-project">Portfolio Site</div>
-                                        </div>
-                                        <div>
-                                            <div class="dark-skills">
-                                                <div class="dark-skill">UI/UX</div>
-                                                <div class="dark-skill">Responsive</div>
-                                                <div class="dark-skill">Animation</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Dark Professional</h3>
-                        <p class="portfolio-description">Sophisticated dark theme with neon accents, perfect for developers and designers.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Dark Theme</span>
-                            <span class="tag">Professional</span>
-                            <span class="tag">Neon Accents</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 3 - Creative -->
-                <div class="portfolio-item" data-category="creative">
-                    <div class="portfolio-preview creative">
-                        <div class="portfolio-screen creative">
-                            <div class="portfolio-header">
-                                <div class="window-controls">
-                                    <div class="control close"></div>
-                                    <div class="control minimize"></div>
-                                    <div class="control maximize"></div>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <div class="creative-layout">
-                                    <div class="creative-header">
-                                        <div class="creative-avatar">
-                                            <i class="fas fa-palette"></i>
-                                        </div>
-                                        <div class="creative-info">
-                                            <div class="creative-name">Amira Layl</div>
-                                            <div class="creative-title">Illustrator & Artist</div>
-                                        </div>
-                                        <div class="creative-links">
-                                            <div class="creative-link"><i class="fab fa-instagram"></i></div>
-                                            <div class="creative-link"><i class="fab fa-artstation"></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="creative-projects">
-                                        <div class="creative-project">
-                                            <div class="creative-project-icon"><i class="fas fa-user"></i></div>
-                                            <div class="creative-project-title">Character Design</div>
-                                        </div>
-                                        <div class="creative-project">
-                                            <div class="creative-project-icon"><i class="fas fa-book"></i></div>
-                                            <div class="creative-project-title">Book Cover</div>
-                                        </div>
-                                        <div class="creative-project">
-                                            <div class="creative-project-icon"><i class="fas fa-music"></i></div>
-                                            <div class="creative-project-title">Album Art</div>
-                                        </div>
-                                        <div class="creative-project">
-                                            <div class="creative-project-icon"><i class="fas fa-lightbulb"></i></div>
-                                            <div class="creative-project-title">Concept Art</div>
-                                        </div>
-                                    </div>
-                                    <div class="creative-skills">
-                                        <div class="creative-skill">Digital Painting</div>
-                                        <div class="creative-skill">Character Design</div>
-                                        <div class="creative-skill">Illustration</div>
-                                        <div class="creative-skill">Concept Art</div>
-                                        <div class="creative-skill">Photoshop</div>
-                                        <div class="creative-skill">Procreate</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Creative Artist</h3>
-                        <p class="portfolio-description">Colorful and expressive design with artistic elements and custom illustrations.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Colorful</span>
-                            <span class="tag">Artistic</span>
-                            <span class="tag">Illustrations</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 4 - Modern -->
-                <div class="portfolio-item" data-category="modern">
-                    <div class="portfolio-preview modern">
-                        <div class="portfolio-screen modern">
-                            <div class="portfolio-header">
-                                <div class="window-controls">
-                                    <div class="control close"></div>
-                                    <div class="control minimize"></div>
-                                    <div class="control maximize"></div>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <div class="modern-layout">
-                                    <div class="modern-header">
-                                        <div class="modern-avatar">
-                                            <i class="fas fa-mobile-alt"></i>
-                                        </div>
-                                        <div class="modern-info">
-                                            <div class="modern-name">Tasnim Ka</div>
-                                            <div class="modern-title">Product Designer</div>
-                                        </div>
-                                    </div>
-                                    <div class="modern-content">
-                                        <div class="modern-tagline">5+ years designing digital products for startups and enterprise companies.</div>
-                                        <div class="modern-stats">
-                                            <div class="modern-stat">
-                                                <div class="modern-stat-value">50+</div>
-                                                <div class="modern-stat-label">Projects</div>
-                                            </div>
-                                            <div class="modern-stat">
-                                                <div class="modern-stat-value">25+</div>
-                                                <div class="modern-stat-label">Clients</div>
-                                            </div>
-                                            <div class="modern-stat">
-                                                <div class="modern-stat-value">5+</div>
-                                                <div class="modern-stat-label">Years</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modern-skills">
-                                        <div class="modern-skill">Design Thinking</div>
-                                        <div class="modern-skill">User Testing</div>
-                                        <div class="modern-skill">Figma</div>
-                                        <div class="modern-skill">Prototyping</div>
-                                        <div class="modern-skill">UI/UX</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Modern Card-based</h3>
-                        <p class="portfolio-description">Contemporary design with card-based layout, shadows, and smooth animations.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Modern</span>
-                            <span class="tag">Card Layout</span>
-                            <span class="tag">Animations</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 5 - Classic -->
-                <div class="portfolio-item" data-category="classic">
-                    <div class="portfolio-preview classic">
-                        <div class="portfolio-screen classic">
-                            <div class="portfolio-header">
-                                <div class="window-controls">
-                                    <div class="control close"></div>
-                                    <div class="control minimize"></div>
-                                    <div class="control maximize"></div>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <div class="classic-layout">
-                                    <div class="classic-sidebar">
-                                        <div class="classic-avatar">
-                                            <i class="fas fa-camera"></i>
-                                        </div>
-                                        <div>
-                                            <div class="classic-name">Marwa Oum Laith</div>
-                                            <div class="classic-title">Photographer</div>
-                                        </div>
-                                        <div class="classic-links">
-                                            <div class="classic-link"><i class="fab fa-500px"></i> 500px</div>
-                                            <div class="classic-link"><i class="fab fa-instagram"></i> Instagram</div>
-                                        </div>
-                                    </div>
-                                    <div class="classic-main">
-                                        <div class="classic-section">
-                                            <div class="classic-section-title">Portfolio</div>
-                                            <div class="classic-projects">
-                                                <div class="classic-project">Portrait Photography</div>
-                                                <div class="classic-project">Landscape Photography</div>
-                                                <div class="classic-project">Fine Art Photography</div>
-                                                <div class="classic-project">Street Photography</div>
-                                            </div>
-                                        </div>
-                                        <div class="classic-section">
-                                            <div class="classic-section-title">Specializations</div>
-                                            <div class="classic-skills">
-                                                <div class="classic-skill">Portrait</div>
-                                                <div class="classic-skill">Landscape</div>
-                                                <div class="classic-skill">Fine Art</div>
-                                                <div class="classic-skill">Street</div>
-                                                <div class="classic-skill">Black & White</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Classic Portfolio</h3>
-                        <p class="portfolio-description">Timeless design with elegant typography and traditional portfolio layout.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Classic</span>
-                            <span class="tag">Elegant</span>
-                            <span class="tag">Traditional</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 6 - Animated -->
-                <div class="portfolio-item" data-category="animated">
-                    <div class="portfolio-preview animated">
-                        <div class="portfolio-screen animated">
-                            <div class="portfolio-header">
-                                <div class="window-controls">
-                                    <div class="control close"></div>
-                                    <div class="control minimize"></div>
-                                    <div class="control maximize"></div>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <div class="animated-layout">
-                                    <div class="animated-header">
-                                        <div class="animated-avatar">
-                                            <i class="fas fa-film"></i>
-                                        </div>
-                                        <div class="animated-info">
-                                            <div class="animated-name">Loulita (Khairah)</div>
-                                            <div class="animated-title">Motion Designer</div>
-                                        </div>
-                                        <div class="animated-links">
-                                            <div class="animated-link"><i class="fab fa-vimeo"></i></div>
-                                            <div class="animated-link"><i class="fab fa-youtube"></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="animated-content">
-                                        <div class="animated-project">
-                                            <div class="animated-project-icon"><i class="fas fa-tv"></i></div>
-                                            <div class="animated-project-title">Brand Animation</div>
-                                        </div>
-                                        <div class="animated-project">
-                                            <div class="animated-project-icon"><i class="fas fa-mobile-alt"></i></div>
-                                            <div class="animated-project-title">UI Motion</div>
-                                        </div>
-                                        <div class="animated-project">
-                                            <div class="animated-project-icon"><i class="fas fa-video"></i></div>
-                                            <div class="animated-project-title">Explainer Video</div>
-                                        </div>
-                                        <div class="animated-project">
-                                            <div class="animated-project-icon"><i class="fas fa-user"></i></div>
-                                            <div class="animated-project-title">Character Anim</div>
-                                        </div>
-                                    </div>
-                                    <div class="animated-skills">
-                                        <div class="animated-skill">After Effects</div>
-                                        <div class="animated-skill">Cinema 4D</div>
-                                        <div class="animated-skill">Principle</div>
-                                        <div class="animated-skill">Lottie</div>
-                                        <div class="animated-skill">Animation</div>
-                                        <div class="animated-skill">Motion Graphics</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3 class="portfolio-title">Animated Showcase</h3>
-                        <p class="portfolio-description">Dynamic portfolio with smooth animations, transitions, and interactive elements.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Animated</span>
-                            <span class="tag">Interactive</span>
-                            <span class="tag">Dynamic</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!--===== FOOTER =====-->
-    <footer class="footer" class="contact">
-        <p class="footer__title">Khadidja</p>
-        <div class="footer__social">
-            <a href="mailto:khadidja7work@gmail.com" class="footer__icon" target="_blank"><i class='bx bxl-gmail'></i></a>
-            <a href="https://www.instagram.com/cadya.art/" class="footer__icon" target="_blank"><i class='bx bxl-instagram'></i></a>
-            <a href="https://t.me/khadidja_dev_art" class="footer__icon" target="_blank"><i class='bx bxl-telegram'></i></a>
+        <div class="hero-section">
+            <h2 class="title">Explore My <span>Portfolio Styles</span> & Website Design Approaches</h2>
         </div>
-        <p class="footer__copy">© 2025 Khadidja Sayoud. All rights reserved.</p>
-    </footer>
 
-    <script>
-        // Mobile menu toggle
-        const navMenu = document.getElementById("nav-menu"),
-            navToggle = document.getElementById("nav-toggle"),
-            navLinks = document.querySelectorAll(".nav__link");
+        <!-- Horizontal Scrollable Styles Section -->
+        <div class="styles-horizontal-container">
+            <div class="styles-horizontal-wrapper">
+                <div class="style-horizontal dark-minimalist">
+                    <img src="pics/dark pc.png" alt="Creative Portfolio Illustration" class="featured-image">
+                    <div class="content-wrapper">
+                        <h3 class="stylename">Dark Minimalist</h3>
+                        <p class="description">Clean, sophisticated design that puts your content in the spotlight.
+                            Perfect for creating a lasting impression with a touch of elegance.</p>
+                        <div class="preview-container">
+                            <img src="pics/black phone.png" alt="Dark Minimalist Design Preview">
+                        </div>
+                    </div>
+                </div>
 
-        navToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("show");
-        });
+                <div class="style-horizontal modern-horizontal">
+                    <img src="pics/modern pc.png" alt="Modern Website Preview" class="featured-image">
+                    <div class="content-wrapper">
+                        <h3 class="stylename">Modern & Vibrant</h3>
+                        <p class="description">Bold colors, dynamic layouts, and cutting-edge design elements that bring
+                            your brand to life. Experience the perfect blend of creativity and functionality.</p>
+                        <div class="preview-container">
+                            <img src="pics/modern phone.png" alt="Modern Design Preview">
+                        </div>
+                    </div>
+                </div>
 
-        navLinks.forEach(link =>
-            link.addEventListener("click", () => {
-                navMenu.classList.remove("show");
-            })
-        );
+                <div class="style-horizontal retro-futuristic-horizontal">
+                    <img src="pics/retro pc.png" alt="Retro-Futuristic Design Preview" class="featured-image">
+                    <div class="content-wrapper">
+                        <h3 class="stylename">Retro-Futuristic</h3>
+                        <p class="description">A perfect fusion of nostalgic elements and futuristic design. Neon
+                            accents, grid patterns, and synthwave aesthetics create an immersive experience.</p>
+                        <div class="preview-container">
+                            <img src="pics/retro phone.png" alt="Retro-Futuristic Design Preview">
+                        </div>
+                    </div>
+                </div>
 
-        // Portfolio filtering
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const portfolioItems = document.querySelectorAll(".portfolio-item");
+                <div class="style-horizontal glassmorphic-horizontal">
+                    <img src="pics/elegance pc.png" alt="Glassmorphic Design Preview" class="featured-image">
+                    <div class="content-wrapper">
+                        <h3 class="stylename">Glassmorphic Elegance</h3>
+                        <p class="description">A stunning blend of transparency and blur effects creating depth and
+                            sophistication. Perfect for a contemporary, high-end portfolio that stands out.</p>
+                        <div class="preview-container">
+                            <img src="pics/elegance.png" alt="Glassmorphic Design Preview">
+                        </div>
+                    </div>
+                </div>
 
-        filterButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove("active"));
-                
-                // Add active class to clicked button
-                button.classList.add("active");
-                
-                const filterValue = button.getAttribute("data-filter");
-                
-                portfolioItems.forEach(item => {
-                    if (filterValue === "all" || item.getAttribute("data-category") === filterValue) {
-                        item.style.display = "block";
-                    } else {
-                        item.style.display = "none";
-                    }
-                });
+
+            </div>
+        </div>
+
+        <section class="contact section" id="contact">
+            <h2 class="section-title">Want something even unique?</h2>
+            <h2 class="section-title">Let's discuss details</h2>
+
+            <div class="contact__container bd-grid">
+                <a href="https://wa.me/213792211652" class="contact__button" target="_blank" id="whatsapp">
+                    <img src="pics/whatsapp_icon.png" alt="Whatsapp Icon">
+                    <span>Send me a WhatsApp message</span>
+                </a>
+            </div>
+            <div class="contact__container bd-grid">
+                <a href="https://t.me/khadidja_dev_art" class="contact__button" target="_blank" id="telegram">
+                    <img src="pics/telegram_icon.png" alt="Telegram Icon">
+                    <span>Message me on Telegram</span>
+                </a>
+            </div>
+
+            <div class="contact__container bd-grid">
+                <a href="mailto:khadidja7work@gmail.com" class="contact__button" target="_blank" id="email">
+                    <img src="pics/email_icon.png" alt="Telegram Icon">
+                    <span>Send me an Email</span>
+                </a>
+            </div>
+        </section>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <p class="footer__title">Khadidja</p>
+            <div class="footer__social">
+                <a href="https://t.me/khadidja_dev_art" class="footer__icon"><i class='bx bxl-telegram'></i></a>
+                <a href="mailto:khadidja7work@gmail.com" class="footer__icon"><i class='bx bxl-gmail'></i></a>
+                <a href="https://www.instagram.com/cadya.art/" class="footer__icon" target="_blank"><i
+                        class='bx bxl-instagram'></i></a>
+                <a href="https://wa.me/213792211652" class="footer__icon"><i class='bx bxl-whatsapp'></i></a>
+            </div>
+
+            <p class="footer__copy">© 2025 Khadidja Sayoud. All rights reserved.</p>
+        </footer>
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="assets/js/main.js"></script>
+
+        <script>
+            const navMenu = document.getElementById("nav-menu"),
+                navToggle = document.getElementById("nav-toggle"),
+                navLinks = document.querySelectorAll(".nav__link");
+
+            // Open / close menu
+            navToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("show");
             });
-        });
 
-        // Add scroll effect to header
-        window.addEventListener("scroll", function() {
-            const header = document.querySelector(".l-header");
-            if (window.scrollY > 50) {
-                header.style.background = "rgba(255, 255, 255, 0.98)";
-                header.style.boxShadow = "0 5px 20px rgba(0, 0, 0, 0.1)";
-            } else {
-                header.style.background = "rgba(255, 255, 255, 0.95)";
-                header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
-            }
-        });
-    </script>
+            // Close menu when clicking a link
+            navLinks.forEach(link =>
+                link.addEventListener("click", () => {
+                    navMenu.classList.remove("show");
+                })
+            );
+        </script>
+    </main>
 </body>
 
 </html>
