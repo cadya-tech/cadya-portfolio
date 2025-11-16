@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="pics\astronaut_hat_icon.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <title>Cadya protfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -19,7 +21,7 @@
     <header class="l-header">
         <nav class="nav bd-grid">
             <a href="#" class="nav__logo"><img src="pics\logo.png" alt="Cadya logo" width="150"></a>
-        
+
             <div class="nav__toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i> <!-- or any icon -->
             </div>
@@ -27,11 +29,9 @@
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-                    <li class="nav__item"><a href="academy.html" class="nav__link">Academy</a></li>
                     <li class="nav__item"><a href="gallery.html" class="nav__link">Gallery</a></li>
-                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                    <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><a href="academy.html" class="nav__link">Academy</a></li>
                 </ul>
             </div>
         </nav>
@@ -44,8 +44,8 @@
             <div class="home__content">
                 <div class="home__data">
                     <h1 class="home__title">
-                        Assalamu Alaykum,<br>
-                        I’m <span class="home__title-color">Khadidja</span><br>
+                
+                       <span class="home__title-color">Khadidja Sayoud</span><br>
                     </h1>
                     <h1 class="home__subtitle">
                         Web & Game Developer<br>
@@ -92,8 +92,8 @@
                         <h3 class="skill-title"><i class='bx bx-code-alt'></i> Web Development</h3>
                         <p>Building responsive full-stack web apps using <strong>HTML, CSS, JavaScript, Flask, and
                                 SQL</strong>. <br>
-                            Focused on clean code, usability, and smooth deployment on Render or Firebase. <br> I also
-                            create static webpages for portfolios or landing pages.</p>
+                            Focused on clean code and usability. <br> I also
+                            create static webpages for unique portfolios or landing pages.</p>
                     </div>
 
                     <a href="web.html"><img src="pics/arrow.png" alt="Arrow icon"></a>
@@ -104,8 +104,7 @@
                     <div>
                         <h3 class="skill-title"><i class='bx bx-joystick'></i> Game & App Development</h3>
                         <p>Creating 2D games and apps in <strong>Godot</strong> for android and windows systems.<br>I
-                            can
-                            also make web apps that interacts with a web server.</p>
+                            can also make web apps that interacts with a web server.</p>
                     </div>
                     <a href="#"><img src="pics/arrow.png" alt="Arrow icon"></a>
 
@@ -116,7 +115,7 @@
                     <div>
                         <h3 class="skill-title"><i class='bx bx-brush'></i> Graphic Design</h3>
                         <p>Designing digital visuals and brand materials using <strong>Canva, Figma, and Gimp</strong>.
-                            Specializing in educational content, course materials, social media and prototyping.</p>
+                            I can prepare full visual identity for your brand, with logos, color schemes, and marketing materials.</p>
                     </div>
                     <a href="design.html"><img src="pics/arrow.png" alt="Arrow icon"></a>
 
@@ -129,7 +128,8 @@
                         <p>Creating detailed sprites, tilesets, and environments.
                             Ability to create assets for your projects or customized backgrounds and paintings.</p>
                     </div>
-                    <a href="https://www.instagram.com/cadya.art/" target="_blank"><img src="pics/arrow.png" alt="Arrow icon"></a>
+                    <a href="https://www.instagram.com/cadya.art/" target="_blank"><img src="pics/arrow.png"
+                            alt="Arrow icon"></a>
 
                 </div>
             </div>
@@ -217,8 +217,8 @@
                     <div class="work__content right">
                         <h3>Graphic design & Pixel art</h3>
                         <p>Created cohesive <strong>digital graphics</strong> and <strong>pixel art assets</strong> for
-                            indie games and branding materials.
-                            Using <strong>Gimpa, Canva, and Pixel Studio</strong>, I design consistent, expressive
+                            indie games and branding materials and prototypes.
+                            Using <strong>Photoshop, Canva, and Pixel Studio</strong>, I design consistent, expressive
                             visuals —
                             from elegant educational posts to detailed 2D sprites and nature-inspired tilesets and
                             landscapes.</p>
@@ -232,6 +232,12 @@
         <section class="contact section" id="contact">
             <h2 class="section-title">Contact</h2>
 
+            <div class="contact__container bd-grid">
+                <a href="https://wa.me/213792211652" class="contact__button" target="_blank" id="whatsapp">
+                    <img src="pics/whatsapp_icon.png" alt="Whatsapp Icon">
+                    <span>Send me a WhatsApp message</span>
+                </a>
+            </div>
             <div class="contact__container bd-grid">
                 <a href="https://t.me/khadidja_dev_art" class="contact__button" target="_blank" id="telegram">
                     <img src="pics/telegram_icon.png" alt="Telegram Icon">
@@ -253,9 +259,10 @@
     <footer class="footer">
         <p class="footer__title">Khadidja</p>
         <div class="footer__social">
-            <a href="#" class="footer__icon"><i class='bx bxl-facebook'></i></a>
-            <a href="#" class="footer__icon"><i class='bx bxl-instagram'></i></a>
-            <a href="#" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+            <a href="https://t.me/khadidja_dev_art" class="footer__icon"><i class='bx bxl-telegram'></i></a>
+            <a href="mailto:khadidja7work@gmail.com" class="footer__icon"><i class='bx bxl-gmail'></i></a>
+            <a href="https://www.instagram.com/cadya.art/" class="footer__icon" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="https://wa.me/213792211652" class="footer__icon"><i class='bx bxl-whatsapp'></i></a>
         </div>
 
         <p class="footer__copy">© 2025 Khadidja Sayoud. All rights reserved.</p>
